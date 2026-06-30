@@ -25,6 +25,11 @@ import Image22 from "../assets/images/Home/image_27.webp";
 import Image23 from "../assets/images/Home/image_28.webp";
 import Image24 from "../assets/images/Home/image_29.webp";
 import Image25 from "../assets/images/Home/image_30.webp";
+import Image26 from "../assets/images/Home/image_31.webp";
+import Image27 from "../assets/images/Home/image_32.webp";
+import Image28 from "../assets/images/Home/image_33.webp";
+import Image29 from "../assets/images/Home/image_34.webp";
+import Image30 from "../assets/images/Home/image_35.webp";
 
 interface Guest {
   name: string;
@@ -216,8 +221,7 @@ const VIP_GUESTS: Guest[] = [
   {
     name: "Murli Manohar Joshi",
     title: "Former Union Minister; Eminent Scholar & Leader",
-    image:
-      "https://www.thehitavada.com/Encyc/2019/11/10/2_10_21_39_joshi_1_H@@IGHT_547_W@@IDTH_835.jpg",
+    image: Image30,
     initials: "MMJ",
   },
 ];
