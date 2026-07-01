@@ -1,5 +1,7 @@
-import { motion } from 'motion/react';
-import { ArrowDown } from 'lucide-react';
+import { motion } from "motion/react";
+import { ArrowDown } from "lucide-react";
+import Image1 from "../assets/images/Home/image_54.webp";
+import Image2 from "../assets/images/Home/image_55.webp";
 
 export default function PavnaPromise() {
   return (
@@ -10,9 +12,9 @@ export default function PavnaPromise() {
           <div className="absolute inset-0 bg-brand-navy rounded-[24px] sm:rounded-[32px] overflow-hidden z-0">
             {/* Background Image with Gradient Overlay */}
             <div className="absolute inset-0 z-0 pointer-events-none">
-              <img 
-                src="https://i.postimg.cc/FzsLgnHD/PIS-WEBSITE-Homepage-01-1.png" 
-                alt="Library" 
+              <img
+                src={Image1}
+                alt="Library"
                 className="w-full h-full object-cover opacity-40 lg:opacity-100"
               />
               <div className="absolute inset-0 bg-gradient-to-t lg:bg-gradient-to-r from-brand-navy via-brand-navy/90 to-transparent" />
@@ -20,7 +22,7 @@ export default function PavnaPromise() {
           </div>
 
           <div className="relative z-10 w-full lg:w-[65%] mb-8 lg:mb-0">
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -30,7 +32,7 @@ export default function PavnaPromise() {
               OUR PHILOSOPHY
             </motion.div>
 
-            <motion.h2 
+            <motion.h2
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -40,7 +42,7 @@ export default function PavnaPromise() {
               Pavna <span className="text-brand-yellow">Promise</span>
             </motion.h2>
 
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -48,11 +50,17 @@ export default function PavnaPromise() {
               className="mb-8 md:mb-10"
             >
               <p className="text-white/90 text-[14px] sm:text-[17px] leading-[24px] max-w-2xl font-light">
-                At Pavna, education is a journey of becoming - of discovering the best version of oneself while learning to live with purpose and joy. We aspire to build global citizens who are rooted in values, are lifelong learners, and unafraid to <span className="text-brand-yellow font-medium">#BeYourself</span>
+                At Pavna, education is a journey of becoming - of discovering
+                the best version of oneself while learning to live with purpose
+                and joy. We aspire to build global citizens who are rooted in
+                values, are lifelong learners, and unafraid to{" "}
+                <span className="text-brand-yellow font-medium">
+                  #BeYourself
+                </span>
               </p>
             </motion.div>
 
-            <motion.button 
+            <motion.button
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
@@ -68,8 +76,8 @@ export default function PavnaPromise() {
 
           {/* Student Cutout Image */}
           <div className="relative lg:absolute bottom-0 lg:bottom-0 left-1/2 -translate-x-1/2 lg:left-auto lg:translate-x-0 lg:right-[2%] w-[90%] sm:w-[70%] lg:w-[42%] h-[300px] sm:h-[350px] lg:h-[120%] z-20 pointer-events-none mt-4 lg:mt-0">
-            <motion.img 
-              src="https://i.postimg.cc/4NxRpGfx/BG.png" 
+            <motion.img
+              src={Image2}
               alt="Pavna Student"
               className="w-full h-full object-contain object-bottom pointer-events-auto cursor-pointer origin-bottom"
               whileHover={{ scale: 1.03 }}

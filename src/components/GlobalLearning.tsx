@@ -1,6 +1,6 @@
-import { useState, ReactNode } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
-import { Cpu, Award, Users, Bus, Sparkles, CheckCircle2 } from 'lucide-react';
+import { useState, ReactNode } from "react";
+import { motion, AnimatePresence } from "motion/react";
+import { Cpu, Award, Users, Bus, Sparkles, CheckCircle2 } from "lucide-react";
 
 interface FeatureCard {
   id: string;
@@ -21,18 +21,39 @@ const CARDS: FeatureCard[] = [
     title: "AI & Robotics",
     tabLabel: "AI & Robotics",
     icon: <Cpu className="w-4 h-4" />,
-    image: "https://pavnaschoolaligarh.com/wp-content/uploads/2026/04/OverlayShadow-10.webp",
-    highlights: ["Hands-on STEM & Robotics Lab", "Coding, Logic & Innovation", "Future-Ready Critical Thinking"],
+    image:
+      "https://pavnaschoolaligarh.com/wp-content/uploads/2026/04/OverlayShadow-10.webp",
+    highlights: [
+      "Hands-on STEM & Robotics Lab",
+      "Coding, Logic & Innovation",
+      "Future-Ready Critical Thinking",
+    ],
     paragraph1: (
       <span>
-        As the <strong className="text-brand-orange font-bold">best international school in Sasni</strong>, Pavna International School equips students with future-ready skills through its AI & Robotics program. As a leading <strong className="text-brand-navy font-bold">Cambridge curriculum school in Sasni</strong>, we encourage innovation, coding, problem-solving, and hands-on STEM learning.
+        As the{" "}
+        <strong className="text-brand-orange font-bold">
+          best international school in Sasni
+        </strong>
+        , Pavna International School equips students with future-ready skills
+        through its AI & Robotics program. As a leading{" "}
+        <strong className="text-brand-navy font-bold">
+          Cambridge curriculum school in Sasni
+        </strong>
+        , we encourage innovation, coding, problem-solving, and hands-on STEM
+        learning.
       </span>
     ),
     paragraph2: (
       <span>
-        With access to <strong className="text-brand-navy font-bold">modern international school facilities</strong>, students explore emerging technologies, develop critical thinking skills, and gain practical experience to thrive in a technology-driven world.
+        With access to{" "}
+        <strong className="text-brand-navy font-bold">
+          modern international school facilities
+        </strong>
+        , students explore emerging technologies, develop critical thinking
+        skills, and gain practical experience to thrive in a technology-driven
+        world.
       </span>
-    )
+    ),
   },
   {
     id: "sports",
@@ -40,18 +61,38 @@ const CARDS: FeatureCard[] = [
     title: "Sports Excellence",
     tabLabel: "Sports Culture",
     icon: <Award className="w-4 h-4" />,
-    image: "https://pavnaschoolaligarh.com/wp-content/uploads/2026/04/tab-img-3.webp",
-    highlights: ["Horse Riding & Swimming", "Cricket, Handball & Tennis", "Expert Coaching & Athletics"],
+    image:
+      "https://pavnaschoolaligarh.com/wp-content/uploads/2026/04/tab-img-3.webp",
+    highlights: [
+      "Horse Riding & Swimming",
+      "Cricket, Handball & Tennis",
+      "Expert Coaching & Athletics",
+    ],
     paragraph1: (
       <span>
-        As one of the <strong className="text-brand-orange font-bold">top international schools in Uttar Pradesh</strong>, Pavna International School encourages students to stay active, disciplined, and confident through a wide range of sports. Our campus offers facilities for <strong className="text-brand-navy font-bold">horse riding, swimming, cricket, handball, lawn tennis, basketball</strong>, and many more indoor and outdoor games.
+        As one of the{" "}
+        <strong className="text-brand-orange font-bold">
+          top international schools in Uttar Pradesh
+        </strong>
+        , Pavna International School encourages students to stay active,
+        disciplined, and confident through a wide range of sports. Our campus
+        offers facilities for{" "}
+        <strong className="text-brand-navy font-bold">
+          horse riding, swimming, cricket, handball, lawn tennis, basketball
+        </strong>
+        , and many more indoor and outdoor games.
       </span>
     ),
     paragraph2: (
       <span>
-        With expert guidance and <strong className="text-brand-navy font-bold">modern international school facilities</strong>, students get the right training environment to explore their potential, build teamwork, and develop a strong sporting spirit.
+        With expert guidance and{" "}
+        <strong className="text-brand-navy font-bold">
+          modern international school facilities
+        </strong>
+        , students get the right training environment to explore their
+        potential, build teamwork, and develop a strong sporting spirit.
       </span>
-    )
+    ),
   },
   {
     id: "faculty",
@@ -59,18 +100,36 @@ const CARDS: FeatureCard[] = [
     title: "Experienced Teaching Faculty",
     tabLabel: "Teaching Faculty",
     icon: <Users className="w-4 h-4" />,
-    image: "https://pavnaschoolaligarh.com/wp-content/uploads/2026/04/OverlayShadow-11.webp",
-    highlights: ["Highly Qualified Educators", "Personalized Mentor Attention", "Global Cambridge Standards"],
+    image:
+      "https://pavnaschoolaligarh.com/wp-content/uploads/2026/04/OverlayShadow-11.webp",
+    highlights: [
+      "Highly Qualified Educators",
+      "Personalized Mentor Attention",
+      "Global Cambridge Standards",
+    ],
     paragraph1: (
       <span>
-        At Pavna International School, our educators are the foundation of student success. As one of the <strong className="text-brand-orange font-bold">top international schools in Uttar Pradesh</strong>, we have a team of highly qualified and experienced teachers who are passionate about nurturing young minds.
+        At Pavna International School, our educators are the foundation of
+        student success. As one of the{" "}
+        <strong className="text-brand-orange font-bold">
+          top international schools in Uttar Pradesh
+        </strong>
+        , we have a team of highly qualified and experienced teachers who are
+        passionate about nurturing young minds.
       </span>
     ),
     paragraph2: (
       <span>
-        Through personalized attention, innovative teaching methods, and a commitment to academic excellence, our faculty helps students build confidence, critical thinking skills, and a lifelong love for learning. Their dedication is one of the key reasons families choose Pavna as the <strong className="text-brand-navy font-bold">best international school in Sasni</strong>.
+        Through personalized attention, innovative teaching methods, and a
+        commitment to academic excellence, our faculty helps students build
+        confidence, critical thinking skills, and a lifelong love for learning.
+        Their dedication is one of the key reasons families choose Pavna as the{" "}
+        <strong className="text-brand-navy font-bold">
+          best international school in Sasni
+        </strong>
+        .
       </span>
-    )
+    ),
   },
   {
     id: "transport",
@@ -78,19 +137,36 @@ const CARDS: FeatureCard[] = [
     title: "Safe & Comfortable Transport",
     tabLabel: "School Transport",
     icon: <Bus className="w-4 h-4" />,
-    image: "https://pavnaschoolaligarh.com/wp-content/uploads/2026/04/DSC04919.JPG-scaled.webp",
-    highlights: ["Fully Air-Conditioned Fleet", "GPS-Enabled Live Tracking", "Trained Attendants & Safety First"],
+    image:
+      "https://pavnaschoolaligarh.com/wp-content/uploads/2026/04/DSC04919.JPG-scaled.webp",
+    highlights: [
+      "Fully Air-Conditioned Fleet",
+      "GPS-Enabled Live Tracking",
+      "Trained Attendants & Safety First",
+    ],
     paragraph1: (
       <span>
-        As the <strong className="text-brand-orange font-bold">best international school in Sasni</strong>, Pavna International School provides a safe, reliable, and convenient transport system for students. Our fleet of <strong className="text-brand-navy font-bold">fully air-conditioned, GPS-enabled buses</strong> covers key routes, ensuring a comfortable travel experience every day.
+        As the{" "}
+        <strong className="text-brand-orange font-bold">
+          best international school in Sasni
+        </strong>
+        , Pavna International School provides a safe, reliable, and convenient
+        transport system for students. Our fleet of{" "}
+        <strong className="text-brand-navy font-bold">
+          fully air-conditioned, GPS-enabled buses
+        </strong>{" "}
+        covers key routes, ensuring a comfortable travel experience every day.
       </span>
     ),
     paragraph2: (
       <span>
-        Each bus is operated by trained drivers and attendants, prioritizing student safety and well-being throughout the journey. With real-time tracking, route updates, and transparent communication, parents can stay informed and enjoy complete peace of mind.
+        Each bus is operated by trained drivers and attendants, prioritizing
+        student safety and well-being throughout the journey. With real-time
+        tracking, route updates, and transparent communication, parents can stay
+        informed and enjoy complete peace of mind.
       </span>
-    )
-  }
+    ),
+  },
 ];
 
 export default function GlobalLearning() {
@@ -99,16 +175,15 @@ export default function GlobalLearning() {
   const currentCard = CARDS.find((card) => card.id === activeTab) || CARDS[0];
 
   return (
-    <section 
-      id="global-learning" 
+    <section
+      id="global-learning"
       className="py-16 md:py-24 bg-gradient-to-b from-[#FDFCFB] to-[#F7F4EF] relative overflow-hidden border-b border-gray-200"
     >
       {/* Background Decorative Patterns */}
       <div className="absolute top-0 right-0 w-80 h-80 bg-brand-orange/5 rounded-full blur-3xl pointer-events-none -mr-40 -mt-20 z-0"></div>
       <div className="absolute bottom-0 left-0 w-96 h-96 bg-brand-sky/5 rounded-full blur-3xl pointer-events-none -ml-48 -mb-20 z-0"></div>
-      
+
       <div className="max-w-7xl mx-auto px-6 sm:px-8 md:px-12 relative z-10 font-gill">
-        
         {/* Header Section with Elegant Swiss-style typography */}
         <div className="mb-14 text-center">
           <div className="flex flex-col items-center w-fit max-w-full mx-auto">
@@ -144,7 +219,9 @@ export default function GlobalLearning() {
                       : "text-brand-navy/70 hover:text-brand-navy hover:bg-gray-100/70"
                   }`}
                 >
-                  <span className={`${isActive ? "text-white" : "text-brand-orange"}`}>
+                  <span
+                    className={`${isActive ? "text-white" : "text-brand-orange"}`}
+                  >
                     {card.icon}
                   </span>
                   <span>{card.tabLabel}</span>
@@ -214,13 +291,10 @@ export default function GlobalLearning() {
                 {/* Linear gradient overlay for depth */}
                 <div className="absolute inset-0 bg-gradient-to-t lg:bg-gradient-to-l from-black/25 via-transparent to-transparent pointer-events-none" />
               </div>
-
             </motion.div>
           </AnimatePresence>
         </div>
-
       </div>
     </section>
   );
 }
-

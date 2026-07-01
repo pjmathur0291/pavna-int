@@ -1,40 +1,43 @@
-import { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
-import { ShieldCheck, Utensils, Home, Heart } from 'lucide-react';
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "motion/react";
+import { ShieldCheck, Utensils, Home, Heart } from "lucide-react";
+import Image1 from "../assets/images/Home/image_56.webp";
+import Image2 from "../assets/images/Home/image_57.webp";
+import Image3 from "../assets/images/Home/image_58.webp";
+import Image4 from "../assets/images/Home/Boarding-facility-2-1.webp";
+import Image5 from "../assets/images/Home/image_59.webp";
+import Image6 from "../assets/images/Home/Study-Area-1-1-1.webp";
+import Image7 from "../assets/images/Home/2O0A1216-1.webp";
+import Image8 from "../assets/images/Home/image_60.webp";
 
 const FEATURES = [
   {
     icon: <ShieldCheck className="w-5 h-5" />,
     title: "Pastoral Care",
-    description: "Dedicated house parents ensuring emotional well-being and academic support around the clock."
+    description:
+      "Dedicated house parents ensuring emotional well-being and academic support around the clock.",
   },
   {
     icon: <Utensils className="w-5 h-5" />,
     title: "Nutritional Advantage",
-    description: "Organic, balanced meals with specialized nutritional options available."
+    description:
+      "Organic, balanced meals with specialized nutritional options available.",
   },
   {
     icon: <Home className="w-5 h-5" />,
     title: "Smart Living",
-    description: "Modern dormitories with air purification and biometric access control."
+    description:
+      "Modern dormitories with air purification and biometric access control.",
   },
   {
     icon: <Heart className="w-5 h-5" />,
     title: "Medical Facilities",
-    description: "We ensure every student's well-being with 24/7 medical care, routine health check-ups, and immediate first-aid support."
-  }
+    description:
+      "We ensure every student's well-being with 24/7 medical care, routine health check-ups, and immediate first-aid support.",
+  },
 ];
 
-const IMAGES = [
-  "https://i.postimg.cc/DZrBMScj/cafeteria-image-pis-jpg.jpg",
-  "https://pavnaschool.com/wp-content/uploads/2026/04/Dorm-Room-1-1.webp",
-  "https://i.postimg.cc/hjwbGydk/DSC06123-JPG.jpg",
-  "https://pavnaschool.com/wp-content/uploads/2026/04/Boarding-facility-2-1.webp",
-  "https://i.postimg.cc/28WT1DTq/DSC06042-JPG.jpg",
-  "https://pavnaschool.com/wp-content/uploads/2026/04/Study-Area-1-1-1.webp",
-  "https://pavnaschool.com/wp-content/uploads/2026/04/2O0A1216-1.webp",
-  "https://i.postimg.cc/YqCBQ7rH/Nursing-jpg.jpg"
-];
+const IMAGES = [Image1, Image2, Image3, Image4, Image5, Image6, Image7, Image8];
 
 export default function BoardingSection() {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -48,10 +51,12 @@ export default function BoardingSection() {
   }, [totalSlides]);
 
   return (
-    <section id="boarding" className="py-16 md:py-24 bg-white overflow-hidden font-gill">
+    <section
+      id="boarding"
+      className="py-16 md:py-24 bg-white overflow-hidden font-gill"
+    >
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
         <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-12">
-          
           {/* Left Content */}
           <div className="w-full lg:w-[42%] flex flex-col items-center lg:items-start text-center lg:text-left">
             <motion.div
@@ -63,7 +68,9 @@ export default function BoardingSection() {
             >
               <div className="flex items-center gap-3 mb-6 w-full">
                 <div className="w-12 h-[2px] bg-brand-orange shrink-0"></div>
-                <span className="shrink-0 text-[11px] leading-[28px] tracking-[1.65px] uppercase font-bold text-brand-orange">BOARDING LIFE</span>
+                <span className="shrink-0 text-[11px] leading-[28px] tracking-[1.65px] uppercase font-bold text-brand-orange">
+                  BOARDING LIFE
+                </span>
                 <div className="w-12 h-[2px] bg-brand-orange shrink-0"></div>
               </div>
 
@@ -71,10 +78,10 @@ export default function BoardingSection() {
                 A Home Away <br className="hidden md:block" /> From Home
               </h2>
             </motion.div>
- 
+
             <div className="space-y-10 text-left w-full">
               {FEATURES.map((feature, i) => (
-                <motion.div 
+                <motion.div
                   key={i}
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
@@ -112,9 +119,9 @@ export default function BoardingSection() {
                 className="absolute inset-0 w-full h-full"
               >
                 <div className="relative w-full h-full rounded-lg overflow-hidden group">
-                  <img 
-                    src={IMAGES[currentIndex]} 
-                    alt={`Boarding Life ${currentIndex + 1}`} 
+                  <img
+                    src={IMAGES[currentIndex]}
+                    alt={`Boarding Life ${currentIndex + 1}`}
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000"
                   />
                   <div className="absolute inset-0 bg-brand-navy/5 group-hover:bg-transparent transition-colors duration-500" />
@@ -129,8 +136,8 @@ export default function BoardingSection() {
                   key={i}
                   onClick={() => setCurrentIndex(i)}
                   className={`w-2 h-2 rounded-full transition-all duration-300 cursor-pointer ${
-                    currentIndex === i 
-                      ? "bg-brand-orange w-5" 
+                    currentIndex === i
+                      ? "bg-brand-orange w-5"
                       : "bg-white/60 hover:bg-white"
                   }`}
                   aria-label={`Go to slide ${i + 1}`}
@@ -138,7 +145,6 @@ export default function BoardingSection() {
               ))}
             </div>
           </div>
-
         </div>
       </div>
     </section>

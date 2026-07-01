@@ -1,7 +1,10 @@
-import { useState, ReactNode } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
-import { Cpu, Trophy, GraduationCap, Bus, ChevronDown } from 'lucide-react';
-
+import { useState, ReactNode } from "react";
+import { motion, AnimatePresence } from "motion/react";
+import { Cpu, Trophy, GraduationCap, Bus, ChevronDown } from "lucide-react";
+import Image1 from "../assets/images/Home/image_61.webp";
+import Image2 from "../assets/images/Home/tab-img-3.webp";
+import Image3 from "../assets/images/Home/image_62.webp";
+import Image4 from "../assets/images/Home/enviroment 2 (1).webp";
 interface DistinctionItem {
   id: string;
   category: string;
@@ -25,10 +28,18 @@ const ITEMS: DistinctionItem[] = [
     icon: <Cpu className="w-5 h-5" />,
     iconBg: "bg-orange-50",
     iconColor: "text-brand-orange",
-    image: "https://iili.io/CqMyomX.jpg",
-    highlights: ["Coding & Innovation Lab", "Cambridge Curriculum Standard", "Hands-on Practical Tinkering"],
-    paragraph1: ["best international school in Sasni", "Equips students with future-ready skills through its AI & Robotics program. As a leading"],
-    paragraph2: "With access to modern international school facilities, students explore emerging technologies, develop critical thinking skills, and gain practical experience to thrive in a technology-driven world."
+    image: Image1,
+    highlights: [
+      "Coding & Innovation Lab",
+      "Cambridge Curriculum Standard",
+      "Hands-on Practical Tinkering",
+    ],
+    paragraph1: [
+      "best international school in Sasni",
+      "Equips students with future-ready skills through its AI & Robotics program. As a leading",
+    ],
+    paragraph2:
+      "With access to modern international school facilities, students explore emerging technologies, develop critical thinking skills, and gain practical experience to thrive in a technology-driven world.",
   },
   {
     id: "sports-excellence",
@@ -38,10 +49,18 @@ const ITEMS: DistinctionItem[] = [
     icon: <Trophy className="w-5 h-5" />,
     iconBg: "bg-sky-50",
     iconColor: "text-brand-sky",
-    image: "https://pavnaschoolaligarh.com/wp-content/uploads/2026/04/tab-img-3.webp",
-    highlights: ["Horse Riding & Swimming", "Modern Indoor/Outdoor Courts", "Dedicated Expert Coaching Staff"],
-    paragraph1: ["top international schools in Uttar Pradesh", "Encourages students to stay active, disciplined, and confident through a wide range of sports. Our campus offers facilities for"],
-    paragraph2: "With expert guidance and modern international school facilities, students get the right training environment to explore their potential, build teamwork, and develop a strong sporting spirit."
+    image: Image2,
+    highlights: [
+      "Horse Riding & Swimming",
+      "Modern Indoor/Outdoor Courts",
+      "Dedicated Expert Coaching Staff",
+    ],
+    paragraph1: [
+      "top international schools in Uttar Pradesh",
+      "Encourages students to stay active, disciplined, and confident through a wide range of sports. Our campus offers facilities for",
+    ],
+    paragraph2:
+      "With expert guidance and modern international school facilities, students get the right training environment to explore their potential, build teamwork, and develop a strong sporting spirit.",
   },
   {
     id: "teaching-faculty",
@@ -51,10 +70,18 @@ const ITEMS: DistinctionItem[] = [
     icon: <GraduationCap className="w-5 h-5" />,
     iconBg: "bg-emerald-50",
     iconColor: "text-emerald-600",
-    image: "https://iili.io/CqV9uu1.jpg",
-    highlights: ["Highly Qualified Experts", "Personalized Mentor Support", "Innovative Teaching Methods"],
-    paragraph1: ["top international schools in Uttar Pradesh", "We have a team of highly qualified and experienced teachers who are passionate about nurturing young minds. Through personalized attention, innovative teaching, and commitment to academic excellence, our faculty"],
-    paragraph2: "Their dedication is one of the key reasons families choose Pavna as the best international school in Sasni, offering learning resources designed for absolute student confidence."
+    image: Image3,
+    highlights: [
+      "Highly Qualified Experts",
+      "Personalized Mentor Support",
+      "Innovative Teaching Methods",
+    ],
+    paragraph1: [
+      "top international schools in Uttar Pradesh",
+      "We have a team of highly qualified and experienced teachers who are passionate about nurturing young minds. Through personalized attention, innovative teaching, and commitment to academic excellence, our faculty",
+    ],
+    paragraph2:
+      "Their dedication is one of the key reasons families choose Pavna as the best international school in Sasni, offering learning resources designed for absolute student confidence.",
   },
   {
     id: "safe-transport",
@@ -64,21 +91,29 @@ const ITEMS: DistinctionItem[] = [
     icon: <Bus className="w-5 h-5" />,
     iconBg: "bg-amber-50",
     iconColor: "text-amber-600",
-    image: "https://i.postimg.cc/BbBgLnJ0/Chat-GPT-Image-Jun-11-2026-11-27-03-AM.png",
-    highlights: ["Fully Air-Conditioned Buses", "GPS-Enabled Live Tracking", "Trained Drivers & Escorts"],
-    paragraph1: ["best international school in Sasni", "Provides a safe, reliable, and convenient transport system for students. Our fleet of fully air-conditioned,"],
-    paragraph2: "Each bus is operated by trained drivers and attendants, prioritizing student safety and well-being throughout the journey. With real-time tracking, route updates, and transparent communication, parents can stay informed and enjoy complete peace of mind."
-  }
+    image: Image4,
+    highlights: [
+      "Fully Air-Conditioned Buses",
+      "GPS-Enabled Live Tracking",
+      "Trained Drivers & Escorts",
+    ],
+    paragraph1: [
+      "best international school in Sasni",
+      "Provides a safe, reliable, and convenient transport system for students. Our fleet of fully air-conditioned,",
+    ],
+    paragraph2:
+      "Each bus is operated by trained drivers and attendants, prioritizing student safety and well-being throughout the journey. With real-time tracking, route updates, and transparent communication, parents can stay informed and enjoy complete peace of mind.",
+  },
 ];
 
 export default function WhatSetsUsApart() {
   const [activeTab, setActiveTab] = useState<string>("ai-robotics");
 
-  const currentItem = ITEMS.find(item => item.id === activeTab) || ITEMS[0];
+  const currentItem = ITEMS.find((item) => item.id === activeTab) || ITEMS[0];
 
   return (
-    <section 
-      id="sets-apart-section" 
+    <section
+      id="sets-apart-section"
       className="py-16 md:py-24 bg-[#FCFAF7] relative overflow-hidden"
     >
       {/* Dynamic ambient backgrounds */}
@@ -86,7 +121,6 @@ export default function WhatSetsUsApart() {
       <div className="absolute bottom-20 left-0 w-96 h-96 bg-brand-sky/5 rounded-full blur-3xl pointer-events-none -ml-48 z-0"></div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-8 md:px-12 relative z-10 font-gill">
-        
         {/* Elegant Swiss Header Layout */}
         <div className="mb-10 md:mb-14 text-center">
           <div className="flex items-center justify-center gap-3 mb-4 w-full max-w-md mx-auto">
@@ -120,10 +154,14 @@ export default function WhatSetsUsApart() {
                       : "text-brand-navy/70 hover:text-brand-navy hover:bg-gray-100/60"
                   }`}
                 >
-                  <span className={`flex-shrink-0 ${isActive ? "text-white" : "text-brand-orange"}`}>
+                  <span
+                    className={`flex-shrink-0 ${isActive ? "text-white" : "text-brand-orange"}`}
+                  >
                     {item.icon}
                   </span>
-                  <span className="text-[9px] sm:text-[11px] md:text-xs leading-snug text-left">{item.title}</span>
+                  <span className="text-[9px] sm:text-[11px] md:text-xs leading-snug text-left">
+                    {item.title}
+                  </span>
                 </button>
               );
             })}
@@ -134,7 +172,7 @@ export default function WhatSetsUsApart() {
         <div className="hidden md:flex bg-white rounded-[8px] shadow-[0_24px_60px_rgba(32,26,91,0.06)] overflow-hidden min-h-[480px] relative group">
           {/* Subtle side accent line */}
           <div className="absolute top-0 left-0 w-2 h-full bg-brand-orange pointer-events-none" />
-          
+
           <AnimatePresence mode="wait">
             <motion.div
               key={activeTab}
@@ -157,11 +195,23 @@ export default function WhatSetsUsApart() {
                 {/* Content text */}
                 <div className="space-y-4 text-gray-650 text-sm sm:text-[16px] leading-relaxed font-medium">
                   <p>
-                    As one of the {" "}
-                    <strong className="text-brand-navy font-bold">{currentItem.paragraph1[0]}</strong>
-                    , Pavna International School {currentItem.paragraph1[1]} {" "}
-                    {currentItem.id === "sports-excellence" && <strong className="text-brand-navy font-bold">horse riding, swimming, cricket, handball, lawn tennis, basketball</strong>}
-                    {currentItem.id === "safe-transport" && <strong className="text-brand-navy font-bold"> fully air-conditioned, GPS-enabled buses</strong>}
+                    As one of the{" "}
+                    <strong className="text-brand-navy font-bold">
+                      {currentItem.paragraph1[0]}
+                    </strong>
+                    , Pavna International School {currentItem.paragraph1[1]}{" "}
+                    {currentItem.id === "sports-excellence" && (
+                      <strong className="text-brand-navy font-bold">
+                        horse riding, swimming, cricket, handball, lawn tennis,
+                        basketball
+                      </strong>
+                    )}
+                    {currentItem.id === "safe-transport" && (
+                      <strong className="text-brand-navy font-bold">
+                        {" "}
+                        fully air-conditioned, GPS-enabled buses
+                      </strong>
+                    )}
                     .
                   </p>
                   <p className="text-gray-550 leading-relaxed font-normal text-xs sm:text-sm md:text-base">
@@ -179,7 +229,7 @@ export default function WhatSetsUsApart() {
                   className="w-full h-full object-cover absolute inset-0"
                   loading="lazy"
                 />
-                
+
                 {/* Visual elegant gradient overlays */}
                 <div className="absolute inset-0 bg-gradient-to-t lg:bg-gradient-to-l from-brand-navy/60 via-transparent to-transparent opacity-70 pointer-events-none" />
               </div>
@@ -192,7 +242,7 @@ export default function WhatSetsUsApart() {
           {ITEMS.map((item) => {
             const isExpanded = activeTab === item.id;
             return (
-              <div 
+              <div
                 key={item.id}
                 className="bg-white rounded-[12px] border border-gray-100 shadow-sm overflow-hidden transition-all duration-300"
               >
@@ -205,7 +255,9 @@ export default function WhatSetsUsApart() {
                   }`}
                 >
                   <div className="flex items-center gap-3">
-                    <div className={`w-9 h-9 rounded-full flex items-center justify-center ${item.iconBg} ${item.iconColor} shrink-0`}>
+                    <div
+                      className={`w-9 h-9 rounded-full flex items-center justify-center ${item.iconBg} ${item.iconColor} shrink-0`}
+                    >
                       {item.icon}
                     </div>
                     <div>
@@ -256,11 +308,23 @@ export default function WhatSetsUsApart() {
                         {/* Text Paragraphs */}
                         <div className="space-y-3 text-gray-650 text-xs sm:text-sm leading-relaxed font-normal">
                           <p>
-                            As one of the {" "}
-                            <strong className="text-brand-navy font-bold">{item.paragraph1[0]}</strong>
-                            , Pavna International School {item.paragraph1[1]} {" "}
-                            {item.id === "sports-excellence" && <strong className="text-brand-navy font-bold">horse riding, swimming, cricket, handball, lawn tennis, basketball</strong>}
-                            {item.id === "safe-transport" && <strong className="text-brand-navy font-bold"> fully air-conditioned, GPS-enabled buses</strong>}
+                            As one of the{" "}
+                            <strong className="text-brand-navy font-bold">
+                              {item.paragraph1[0]}
+                            </strong>
+                            , Pavna International School {item.paragraph1[1]}{" "}
+                            {item.id === "sports-excellence" && (
+                              <strong className="text-brand-navy font-bold">
+                                horse riding, swimming, cricket, handball, lawn
+                                tennis, basketball
+                              </strong>
+                            )}
+                            {item.id === "safe-transport" && (
+                              <strong className="text-brand-navy font-bold">
+                                {" "}
+                                fully air-conditioned, GPS-enabled buses
+                              </strong>
+                            )}
                             .
                           </p>
                           <p className="text-gray-550 font-normal">
@@ -275,7 +339,6 @@ export default function WhatSetsUsApart() {
             );
           })}
         </div>
-
       </div>
     </section>
   );

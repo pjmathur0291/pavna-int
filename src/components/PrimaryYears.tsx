@@ -1,51 +1,64 @@
-import { FC } from 'react';
-import { motion } from 'motion/react';
-import { 
-  Users, 
-  BookOpen, 
-  Brain, 
-  ShieldCheck, 
-  PenTool, 
-  Calculator, 
-  Sparkles, 
-  Globe, 
-  Activity, 
-  Music, 
-  Palette, 
-  Cpu, 
-  Laptop, 
-  Bookmark, 
+import { FC } from "react";
+import { motion } from "motion/react";
+import {
+  Users,
+  BookOpen,
+  Brain,
+  ShieldCheck,
+  PenTool,
+  Calculator,
+  Sparkles,
+  Globe,
+  Activity,
+  Music,
+  Palette,
+  Cpu,
+  Laptop,
+  Bookmark,
   ArrowRight,
-  GraduationCap
-} from 'lucide-react';
+  GraduationCap,
+} from "lucide-react";
+import Image1 from "../assets/images/Home/DSC05741.JPG.webp";
+import Image2 from "../assets/images/Home/DSC05824.JPG.webp";
+import Image3 from "../assets/images/Home/ChatGPT Image Jun 29, 2026, 04_53_32 PM.webp";
+import Image4 from "../assets/images/Home/ChatGPT Image Jun 29, 2026, 05_01_48 PM.webp";
 
 const PrimaryYears: FC = () => {
   return (
     <div className="bg-[#FDFCFB] min-h-screen text-brand-black font-gill selection:bg-brand-orange/20 selection:text-brand-navy">
-      
       {/* 1. Header Hero Panel with Breadcrumbs */}
-      <section id="primary-hero" className="relative bg-brand-navy text-white overflow-hidden pt-32 pb-16 md:pt-40 md:pb-24 border-b border-white/5">
+      <section
+        id="primary-hero"
+        className="relative bg-brand-navy text-white overflow-hidden pt-32 pb-16 md:pt-40 md:pb-24 border-b border-white/5"
+      >
         <div className="absolute inset-0 z-0 opacity-15 pointer-events-none">
-          <img 
-            src="https://i.postimg.cc/j5g0S4k5/Primary.jpg" 
-            alt="Cambridge Primary Background" 
+          <img
+            src={Image1}
+            alt="Cambridge Primary Background"
             className="w-full h-full object-cover scale-105 filter blur-[2px]"
             referrerPolicy="no-referrer"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-brand-navy to-transparent" />
         </div>
-        
+
         {/* Decorative Grid Patterns */}
         <div className="absolute inset-0 bg-grid-pattern opacity-[0.03] pointer-events-none" />
 
         <div className="max-w-7xl mx-auto px-6 relative z-10">
           {/* Breadcrumbs */}
           <div className="flex items-center gap-2 text-xs md:text-sm text-brand-gray mb-6">
-            <span className="hover:text-brand-orange transition-colors cursor-pointer" onClick={() => window.location.hash = ''}>Home</span>
+            <span
+              className="hover:text-brand-orange transition-colors cursor-pointer"
+              onClick={() => (window.location.hash = "")}
+            >
+              Home
+            </span>
             <span className="text-white/30">/</span>
             <span className="text-white/50">Academics</span>
             <span className="text-white/30">/</span>
-            <span className="text-brand-orange font-bold">Primary (Age 5 To 11 Years)</span>
+            <span className="text-brand-orange font-bold">
+              Primary (Age 5 To 11 Years)
+            </span>
           </div>
 
           <motion.div
@@ -55,10 +68,12 @@ const PrimaryYears: FC = () => {
             className="max-w-3xl"
           >
             <h1 className="text-4xl md:text-[52px] lg:text-[52px] font-sans font-bold leading-tight md:leading-[58px] lg:leading-[58px] tracking-tight text-white mb-4">
-              Primary (Age 5 To 11 Years)
+              Primary <br />
+              (Age 5 To 11 Years)
             </h1>
             <p className="text-lg md:text-xl text-white/80 leading-relaxed font-light font-gill max-w-2xl">
-              Cambridge Primary starts learners on an exciting educational journey.
+              Cambridge Primary starts learners on an exciting educational
+              journey.
             </p>
           </motion.div>
         </div>
@@ -71,9 +86,13 @@ const PrimaryYears: FC = () => {
             <h2 className="text-3xl sm:text-4xl font-serif font-bold text-brand-navy mb-6">
               Cambridge Primary
             </h2>
-            
+
             <p className="text-[#4B5563] text-[16px] leading-[24px] font-medium font-gill mb-6">
-              Typically for 5 to 11 year olds, it provides a strong foundation for students at the beginning of their schooling before progressing through the Cambridge Pathway in an age-appropriate way. At our Cambridge International School, this stage is designed to build curiosity and confidence in every learner.
+              Typically for 5 to 11 year olds, it provides a strong foundation
+              for students at the beginning of their schooling before
+              progressing through the Cambridge Pathway in an age-appropriate
+              way. At our Cambridge International School, this stage is designed
+              to build curiosity and confidence in every learner.
             </p>
             <p className="text-[#201A5B] text-[18px] leading-[26px] font-semibold font-sans">
               International Education is built on four key pillars:
@@ -83,10 +102,26 @@ const PrimaryYears: FC = () => {
           {/* 4 Pillars Grid Cards */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
             {[
-              { name: "Teaching", icon: Users, desc: "A world-class pedagogical framework to engage student minds and direct curiosity." },
-              { name: "Curriculum", icon: BookOpen, desc: "A broad, balanced curriculum that lays deep roots for upcoming academic milestones." },
-              { name: "Learning", icon: Brain, desc: "Experiential inquiry where students engage directly with key ideas and concepts." },
-              { name: "Assessment", icon: ShieldCheck, desc: "Evaluations designed to map growth and track child progression continuously." }
+              {
+                name: "Teaching",
+                icon: Users,
+                desc: "A world-class pedagogical framework to engage student minds and direct curiosity.",
+              },
+              {
+                name: "Curriculum",
+                icon: BookOpen,
+                desc: "A broad, balanced curriculum that lays deep roots for upcoming academic milestones.",
+              },
+              {
+                name: "Learning",
+                icon: Brain,
+                desc: "Experiential inquiry where students engage directly with key ideas and concepts.",
+              },
+              {
+                name: "Assessment",
+                icon: ShieldCheck,
+                desc: "Evaluations designed to map growth and track child progression continuously.",
+              },
             ].map((pillar, i) => {
               const IconComp = pillar.icon;
               return (
@@ -114,7 +149,7 @@ const PrimaryYears: FC = () => {
           </div>
 
           {/* Quote Banner (Facilitator Highlight) */}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -124,18 +159,21 @@ const PrimaryYears: FC = () => {
             <div className="absolute top-0 right-0 transform translate-x-4 -translate-y-4 text-brand-orange/5 pointer-events-none">
               <i className="fas fa-quote-right text-9xl"></i>
             </div>
-            
+
             <div className="flex flex-col md:flex-row items-center gap-6 relative z-10">
               <div className="w-16 h-16 rounded-full bg-brand-orange/10 flex items-center justify-center shrink-0">
                 <GraduationCap size={32} className="text-brand-orange" />
               </div>
               <div>
                 <p className="italic text-brand-navy font-serif text-[17px] sm:text-[19px] leading-relaxed mb-4 font-medium">
-                  "Cambridge Primary has a very flexible curriculum. It is not restrictive. I can bring local and international examples into my class, and it works very well with my students."
+                  "Cambridge Primary has a very flexible curriculum. It is not
+                  restrictive. I can bring local and international examples into
+                  my class, and it works very well with my students."
                 </p>
                 <div className="flex items-center gap-2">
                   <span className="text-[12px] uppercase tracking-wider font-bold text-brand-navy">
-                    Ms. Chitra Gupta <span className="text-brand-orange">(PIS Facilitator)</span>
+                    Ms. Chitra Gupta{" "}
+                    <span className="text-brand-orange">(PIS Facilitator)</span>
                   </span>
                 </div>
               </div>
@@ -145,7 +183,10 @@ const PrimaryYears: FC = () => {
       </section>
 
       {/* 3. Learning Objectives with Images */}
-      <section id="primary-objectives" className="py-16 md:py-24 bg-[#FAF9F6] border-t border-b border-gray-100/85">
+      <section
+        id="primary-objectives"
+        className="py-16 md:py-24 bg-[#FAF9F6] border-t border-b border-gray-100/85"
+      >
         <div className="max-w-7xl mx-auto px-6">
           <div className="max-w-3xl mb-16">
             <div className="flex flex-col items-start w-fit max-w-full">
@@ -167,20 +208,20 @@ const PrimaryYears: FC = () => {
               {
                 label: "Pedagogy",
                 text: "The approaches that help teaching and learning to take place.",
-                image: "https://i.postimg.cc/1zppvYb8/DSC05824-JPG.jpg"
+                image: Image2,
               },
               {
                 label: "Curriculum",
                 text: "The required knowledge, understanding and skills.",
-                image: "https://i.postimg.cc/SswWJTSs/curricluam.png"
+                image: Image3,
               },
               {
                 label: "Assessment",
                 text: "The process of finding out what learners have learned.",
-                image: "https://i.postimg.cc/yNLjYy3Y/image.png"
-              }
+                image: Image4,
+              },
             ].map((col, index) => (
-              <motion.div 
+              <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -190,9 +231,9 @@ const PrimaryYears: FC = () => {
               >
                 <div>
                   <div className="relative aspect-square w-full rounded-xl overflow-hidden mb-5 bg-neutral-100">
-                    <img 
-                      src={col.image} 
-                      alt={col.label} 
+                    <img
+                      src={col.image}
+                      alt={col.label}
                       className="w-full h-full object-cover transform scale-100 group-hover:scale-105 transition-transform duration-700"
                       referrerPolicy="no-referrer"
                     />
@@ -211,7 +252,9 @@ const PrimaryYears: FC = () => {
 
           <div className="max-w-4xl mx-auto text-center mt-12">
             <p className="text-brand-navy font-serif text-lg md:text-xl font-medium leading-relaxed italic">
-              "Through experiential learning, students at our Cambridge Primary School engage directly with concepts rather than just memorizing them."
+              "Through experiential learning, students at our Cambridge Primary
+              School engage directly with concepts rather than just memorizing
+              them."
             </p>
           </div>
         </div>
@@ -229,30 +272,76 @@ const PrimaryYears: FC = () => {
                 </span>
                 <div className="w-12 h-[2px] bg-brand-orange shrink-0"></div>
               </div>
-              
+
               <h2 className="text-3xl sm:text-4xl font-serif font-bold text-brand-navy mb-6">
                 Cambridge Primary Curriculum
               </h2>
             </div>
-            
+
             <p className="text-[#4B5563] text-[16px] leading-[24px] font-medium font-gill">
-              Students study a broad and balanced range of subjects that lay the foundation for future success in the next stage of education, as well as plenty of opportunities to develop creativity, expression and personal wellbeing in a variety of ways. The Cambridge Primary curriculum framework places strong emphasis on <strong>Problem Solving Skills Development</strong> alongside core academic learning.
+              Students study a broad and balanced range of subjects that lay the
+              foundation for future success in the next stage of education, as
+              well as plenty of opportunities to develop creativity, expression
+              and personal wellbeing in a variety of ways. The Cambridge Primary
+              curriculum framework places strong emphasis on{" "}
+              <strong>Problem Solving Skills Development</strong> alongside core
+              academic learning.
             </p>
           </div>
 
           {/* Subjects Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
             {[
-              { title: "English", desc: "Developing reading, speaking, listening and written skills.", icon: BookOpen },
-              { title: "Hindi", desc: "Strengthening native language fluency and textual understanding.", icon: PenTool },
-              { title: "Mathematics", desc: "Logical math and foundational analytical skills.", icon: Calculator },
-              { title: "Sciences", desc: "Interactive inquiry of physical and natural principles.", icon: Sparkles },
-              { title: "Global Perspectives", desc: "Nurturing modern global awareness and local viewpoints.", icon: Globe },
-              { title: "Physical Education", desc: "Reinforcing gross motor skills, teamwork and personal fitness.", icon: Activity },
-              { title: "Music", desc: "Exploring sound, rhythm, creative and acoustic aesthetics.", icon: Music },
-              { title: "Art and Design", desc: "Expressive mediums, visual layout, and graphic creations.", icon: Palette },
-              { title: "Design and Technology", desc: "Iterative structure, physical and architectural innovations.", icon: Cpu },
-              { title: "Information and Communication Technology", desc: "Digital awareness, systems, programming and tools.", icon: Laptop }
+              {
+                title: "English",
+                desc: "Developing reading, speaking, listening and written skills.",
+                icon: BookOpen,
+              },
+              {
+                title: "Hindi",
+                desc: "Strengthening native language fluency and textual understanding.",
+                icon: PenTool,
+              },
+              {
+                title: "Mathematics",
+                desc: "Logical math and foundational analytical skills.",
+                icon: Calculator,
+              },
+              {
+                title: "Sciences",
+                desc: "Interactive inquiry of physical and natural principles.",
+                icon: Sparkles,
+              },
+              {
+                title: "Global Perspectives",
+                desc: "Nurturing modern global awareness and local viewpoints.",
+                icon: Globe,
+              },
+              {
+                title: "Physical Education",
+                desc: "Reinforcing gross motor skills, teamwork and personal fitness.",
+                icon: Activity,
+              },
+              {
+                title: "Music",
+                desc: "Exploring sound, rhythm, creative and acoustic aesthetics.",
+                icon: Music,
+              },
+              {
+                title: "Art and Design",
+                desc: "Expressive mediums, visual layout, and graphic creations.",
+                icon: Palette,
+              },
+              {
+                title: "Design and Technology",
+                desc: "Iterative structure, physical and architectural innovations.",
+                icon: Cpu,
+              },
+              {
+                title: "Information and Communication Technology",
+                desc: "Digital awareness, systems, programming and tools.",
+                icon: Laptop,
+              },
             ].map((subject, i) => {
               const IconComp = subject.icon;
               return (
@@ -284,10 +373,12 @@ const PrimaryYears: FC = () => {
       </section>
 
       {/* 5. Cambridge Primary Checkpoint */}
-      <section id="primary-checkpoint" className="py-16 md:py-24 bg-[#FAF9F6] border-t border-b border-gray-100/85">
+      <section
+        id="primary-checkpoint"
+        className="py-16 md:py-24 bg-[#FAF9F6] border-t border-b border-gray-100/85"
+      >
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            
             <div className="lg:col-span-5">
               <div className="flex flex-col items-start w-fit max-w-full">
                 <div className="flex items-center gap-3 mb-6 w-full">
@@ -303,13 +394,18 @@ const PrimaryYears: FC = () => {
               </div>
               <div className="space-y-4 text-[#4B5563] text-[15px] font-medium font-gill leading-relaxed">
                 <p>
-                  Cambridge Primary Checkpoint is a series of assessments designed to assess learners at the end of the Cambridge Primary programme.
+                  Cambridge Primary Checkpoint is a series of assessments
+                  designed to assess learners at the end of the Cambridge
+                  Primary programme.
                 </p>
                 <p>
-                  For English, Mathematics and Science, Cambridge Primary Checkpoint tests are independently marked by Cambridge International.
+                  For English, Mathematics and Science, Cambridge Primary
+                  Checkpoint tests are independently marked by Cambridge
+                  International.
                 </p>
                 <p>
-                  They will provide a clear picture of learner's performance as they move on to the next stage of education.
+                  They will provide a clear picture of learner's performance as
+                  they move on to the next stage of education.
                 </p>
               </div>
             </div>
@@ -324,9 +420,10 @@ const PrimaryYears: FC = () => {
                   <div className="w-12 h-[2px] bg-brand-orange shrink-0"></div>
                 </div>
               </div>
-              
+
               <p className="text-brand-navy text-lg md:text-xl font-medium font-serif leading-relaxed mb-6">
-                This curriculum framework, with continuous experiential learning, ensures every child is assessment-ready.
+                This curriculum framework, with continuous experiential
+                learning, ensures every child is assessment-ready.
               </p>
 
               <div className="w-full h-[1px] bg-neutral-100 my-6"></div>
@@ -334,29 +431,34 @@ const PrimaryYears: FC = () => {
               {/* Manisha Sharma Facilitator Quote */}
               <div className="pt-2">
                 <p className="italic text-neutral-700 text-sm md:text-base leading-relaxed font-medium mb-4">
-                  "The big difference comes with the level at which Cambridge subjects are assessed, the rigorous assessment methodology and the ease at which educators can continually track student progress."
+                  "The big difference comes with the level at which Cambridge
+                  subjects are assessed, the rigorous assessment methodology and
+                  the ease at which educators can continually track student
+                  progress."
                 </p>
                 <div className="flex items-center gap-2">
                   <Bookmark size={16} className="text-brand-orange shrink-0" />
                   <span className="text-[11px] uppercase tracking-[1.5px] font-bold text-brand-navy font-sans">
-                    Ms. Manisha Sharma <span className="text-brand-orange">(PIS Facilitator)</span>
+                    Ms. Manisha Sharma{" "}
+                    <span className="text-brand-orange">(PIS Facilitator)</span>
                   </span>
                 </div>
               </div>
             </div>
-
           </div>
         </div>
       </section>
 
       {/* 6. Page-to-Page Navigation */}
-      <section id="primary-navigation" className="py-16 bg-white border-t border-neutral-100">
+      <section
+        id="primary-navigation"
+        className="py-16 bg-white border-t border-neutral-100"
+      >
         <div className="max-w-7xl mx-auto px-6">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-6">
-            
             {/* Previous button */}
             <div className="w-full sm:w-auto text-left order-2 sm:order-1">
-              <a 
+              <a
                 href="#early-years"
                 className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full border border-neutral-200 hover:border-brand-orange hover:text-brand-orange text-brand-navy text-[13px] font-bold tracking-wider transition-all duration-300 shadow-sm hover:shadow-md active:scale-95 cursor-pointer bg-white w-full sm:w-auto font-sans"
               >
@@ -365,8 +467,8 @@ const PrimaryYears: FC = () => {
             </div>
 
             {/* Center Home button */}
-            <button 
-              onClick={() => window.location.hash = ''} 
+            <button
+              onClick={() => (window.location.hash = "")}
               className="inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-full bg-brand-orange hover:bg-brand-dark-orange text-white text-[13px] font-bold tracking-wider transition-all shadow-md active:scale-95 cursor-pointer w-full sm:w-auto order-1 sm:order-2"
             >
               Return to Homepage
@@ -375,18 +477,16 @@ const PrimaryYears: FC = () => {
 
             {/* Next button */}
             <div className="w-full sm:w-auto text-right order-3">
-              <a 
+              <a
                 href="#lower-secondary"
                 className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full border border-neutral-200 hover:border-brand-orange hover:text-brand-orange text-brand-navy text-[13px] font-bold tracking-wider transition-all duration-300 shadow-sm hover:shadow-md active:scale-95 cursor-pointer bg-white w-full sm:w-auto font-sans"
               >
                 Lower Secondary &rarr;
               </a>
             </div>
-
           </div>
         </div>
       </section>
-
     </div>
   );
 };
