@@ -205,7 +205,45 @@ export const ContactUs: FC = () => {
       }, 1500);
     }
   };
+  useEffect(() => {
+    const scriptSrc = "https://widgets.in4.nopaperforms.com/emwgts.js";
+    let script = document.querySelector(
+      `script[src="${scriptSrc}"]`,
+    ) as HTMLScriptElement | null;
 
+    // Form ko initialize karne ka core function
+    const initializeForm = () => {
+      const globalWindow = window as any;
+      if (
+        globalWindow.NPF_WIDGETS &&
+        typeof globalWindow.NPF_WIDGETS.init === "function"
+      ) {
+        globalWindow.NPF_WIDGETS.init();
+      }
+    };
+
+    if (!script) {
+      // 1. Agar script nahi hai, toh use create karein aur append karein
+      const newScript = document.createElement("script");
+      newScript.type = "text/javascript";
+      newScript.async = true;
+      newScript.src = scriptSrc;
+
+      // CRITICAL FIX: Script load hote hi form ko initialize karein
+      newScript.onload = () => {
+        initializeForm();
+      };
+
+      document.body.appendChild(newScript);
+    } else {
+      // 2. Agar script pehle se loaded hai (spa routing ke vajah se), toh minor delay ke baad init karein
+      const timer = setTimeout(() => {
+        initializeForm();
+      }, 150);
+
+      return () => clearTimeout(timer);
+    }
+  }, []);
   return (
     <div className="bg-[#FDFCFB] min-h-screen text-brand-black font-gill selection:bg-brand-orange/20 selection:text-brand-navy">
       {/* 1. Header Hero Panel with Breadcrumbs (consistent with existing pages) */}
@@ -403,366 +441,12 @@ export const ContactUs: FC = () => {
               </div>
 
               {/* Interactive Form */}
-              <form onSubmit={handleSubmit} className="space-y-5">
-                {/* Row 1: Name & Age */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                  <div className="flex flex-col space-y-1">
-                    <input
-                      type="text"
-                      placeholder="Name *"
-                      value={formData.name}
-                      onChange={(e) =>
-                        handleInputChange("name", e.target.value)
-                      }
-                      className={`w-full px-5 py-3.5 bg-[#FAF9F6] border rounded-2xl text-[15px] font-gill font-medium text-brand-navy placeholder-neutral-400 transition-all duration-300 focus:outline-none focus:bg-white focus:ring-1 ${
-                        errors.name
-                          ? "border-red-500 focus:border-red-500 focus:ring-red-100"
-                          : "border-neutral-200 focus:border-brand-orange focus:ring-brand-orange/10"
-                      }`}
-                    />
-                    {errors.name && (
-                      <span className="text-red-500 text-xs font-semibold pl-1 font-gill">
-                        {errors.name}
-                      </span>
-                    )}
-                  </div>
-
-                  <div className="flex flex-col space-y-1">
-                    <input
-                      type="number"
-                      placeholder="Age *"
-                      value={formData.age}
-                      onChange={(e) => handleInputChange("age", e.target.value)}
-                      className={`w-full px-5 py-3.5 bg-[#FAF9F6] border rounded-2xl text-[15px] font-gill font-medium text-brand-navy placeholder-neutral-400 transition-all duration-300 focus:outline-none focus:bg-white focus:ring-1 ${
-                        errors.age
-                          ? "border-red-500 focus:border-red-500 focus:ring-red-100"
-                          : "border-neutral-200 focus:border-brand-orange focus:ring-brand-orange/10"
-                      }`}
-                    />
-                    {errors.age && (
-                      <span className="text-red-500 text-xs font-semibold pl-1 font-gill">
-                        {errors.age}
-                      </span>
-                    )}
-                  </div>
-                </div>
-
-                {/* Row 2: State & City */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                  <div className="flex flex-col space-y-1">
-                    <select
-                      value={formData.state}
-                      onChange={(e) =>
-                        handleInputChange("state", e.target.value)
-                      }
-                      className={`w-full px-5 py-3.5 bg-[#FAF9F6] border rounded-2xl text-[15px] font-gill font-medium text-brand-navy transition-all duration-300 focus:outline-none focus:bg-white focus:ring-1 appearance-none cursor-pointer ${
-                        errors.state
-                          ? "border-red-500 focus:border-red-500 focus:ring-red-100"
-                          : "border-neutral-200 focus:border-brand-orange focus:ring-brand-orange/10"
-                      }`}
-                    >
-                      <option value="" disabled className="text-neutral-400">
-                        State *
-                      </option>
-                      {Object.keys(STATES_CITIES_MAP).map((st) => (
-                        <option key={st} value={st}>
-                          {st}
-                        </option>
-                      ))}
-                    </select>
-                    {errors.state && (
-                      <span className="text-red-500 text-xs font-semibold pl-1 font-gill">
-                        {errors.state}
-                      </span>
-                    )}
-                  </div>
-
-                  <div className="flex flex-col space-y-1">
-                    <select
-                      value={formData.city}
-                      onChange={(e) =>
-                        handleInputChange("city", e.target.value)
-                      }
-                      disabled={!formData.state}
-                      className={`w-full px-5 py-3.5 bg-[#FAF9F6] border rounded-2xl text-[15px] font-gill font-medium text-brand-navy transition-all duration-300 focus:outline-none focus:bg-white focus:ring-1 appearance-none cursor-pointer disabled:bg-neutral-50 disabled:opacity-70 ${
-                        errors.city
-                          ? "border-red-500 focus:border-red-500 focus:ring-red-100"
-                          : "border-neutral-200 focus:border-brand-orange focus:ring-brand-orange/10"
-                      }`}
-                    >
-                      <option value="" disabled className="text-neutral-400">
-                        City *
-                      </option>
-                      {formData.state &&
-                        STATES_CITIES_MAP[formData.state]?.map((c) => (
-                          <option key={c} value={c}>
-                            {c}
-                          </option>
-                        ))}
-                    </select>
-                    {errors.city && (
-                      <span className="text-red-500 text-xs font-semibold pl-1 font-gill">
-                        {errors.city}
-                      </span>
-                    )}
-                  </div>
-                </div>
-
-                {/* Row 3: Mobile Country Code Prefix & Mobile Number Input */}
-                <div className="flex flex-col space-y-1">
-                  <div
-                    className={`flex items-stretch rounded-2xl border overflow-hidden transition-all duration-300 ${
-                      errors.mobileNumber
-                        ? "border-red-500 focus-within:ring-1 focus-within:ring-red-100 focus-within:border-red-500"
-                        : "border-neutral-200 focus-within:ring-1 focus-within:ring-brand-orange/10 focus-within:border-brand-orange"
-                    }`}
-                  >
-                    {/* Country code selector */}
-                    <select
-                      value={formData.countryCode}
-                      onChange={(e) =>
-                        handleInputChange("countryCode", e.target.value)
-                      }
-                      className="px-4 bg-[#FAF9F6] border-r border-neutral-200 text-[15px] font-gill font-medium text-brand-navy focus:outline-none appearance-none cursor-pointer"
-                    >
-                      {COUNTRY_CODES.map((c) => (
-                        <option key={c.code} value={c.code}>
-                          {c.code}
-                        </option>
-                      ))}
-                    </select>
-
-                    {/* Number input */}
-                    <input
-                      type="tel"
-                      placeholder="Mobile Number *"
-                      value={formData.mobileNumber}
-                      onChange={(e) =>
-                        handleInputChange("mobileNumber", e.target.value)
-                      }
-                      className="flex-1 px-5 py-3.5 bg-[#FAF9F6] focus:bg-white text-[15px] font-gill font-medium text-brand-navy placeholder-neutral-400 focus:outline-none"
-                    />
-                  </div>
-                  {errors.mobileNumber && (
-                    <span className="text-red-500 text-xs font-semibold pl-1 font-gill">
-                      {errors.mobileNumber}
-                    </span>
-                  )}
-                </div>
-
-                {/* Row 4: Email Address */}
-                <div className="flex flex-col space-y-1">
-                  <input
-                    type="email"
-                    placeholder="Email Address *"
-                    value={formData.emailAddress}
-                    onChange={(e) =>
-                      handleInputChange("emailAddress", e.target.value)
-                    }
-                    className={`w-full px-5 py-3.5 bg-[#FAF9F6] border rounded-2xl text-[15px] font-gill font-medium text-brand-navy placeholder-neutral-400 transition-all duration-300 focus:outline-none focus:bg-white focus:ring-1 ${
-                      errors.emailAddress
-                        ? "border-red-500 focus:border-red-500 focus:ring-red-100"
-                        : "border-neutral-200 focus:border-brand-orange focus:ring-brand-orange/10"
-                    }`}
-                  />
-                  {errors.emailAddress && (
-                    <span className="text-red-500 text-xs font-semibold pl-1 font-gill">
-                      {errors.emailAddress}
-                    </span>
-                  )}
-                </div>
-
-                {/* Row 5: Seeking Admission For & Schooling Option */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                  <div className="flex flex-col space-y-1">
-                    <select
-                      value={formData.admissionFor}
-                      onChange={(e) =>
-                        handleInputChange("admissionFor", e.target.value)
-                      }
-                      className={`w-full px-5 py-3.5 bg-[#FAF9F6] border rounded-2xl text-[15px] font-gill font-medium text-brand-navy transition-all duration-300 focus:outline-none focus:bg-white focus:ring-1 appearance-none cursor-pointer pr-10 bg-[url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2020%2020%22%20fill%3D%22none%22%3E%3Cpath%20d%3D%22M7%209l3%203%203-3%22%20stroke%3D%22%23201A5B%22%20stroke-width%3D%221.5%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E')] bg-[position:right_1rem_center] bg-[size:1.25rem_1.25rem] bg-no-repeat ${
-                        errors.admissionFor
-                          ? "border-red-500 focus:border-red-500 focus:ring-red-100"
-                          : "border-neutral-200 focus:border-brand-orange focus:ring-brand-orange/10"
-                      }`}
-                    >
-                      <option value="" disabled className="text-neutral-400">
-                        Seeking Admission For *
-                      </option>
-                      {ADMISSION_GRADES.map((grade) => (
-                        <option key={grade} value={grade}>
-                          {grade}
-                        </option>
-                      ))}
-                    </select>
-                    {errors.admissionFor && (
-                      <span className="text-red-500 text-xs font-semibold pl-1 font-gill">
-                        {errors.admissionFor}
-                      </span>
-                    )}
-                  </div>
-
-                  <div className="flex flex-col space-y-1">
-                    <select
-                      value={formData.schoolingOption}
-                      onChange={(e) =>
-                        handleInputChange("schoolingOption", e.target.value)
-                      }
-                      className={`w-full px-5 py-3.5 bg-[#FAF9F6] border rounded-2xl text-[15px] font-gill font-medium text-brand-navy transition-all duration-300 focus:outline-none focus:bg-white focus:ring-1 appearance-none cursor-pointer pr-10 bg-[url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2020%2020%22%20fill%3D%22none%22%3E%3Cpath%20d%3D%22M7%209l3%203%203-3%22%20stroke%3D%22%23201A5B%22%20stroke-width%3D%221.5%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E')] bg-[position:right_1rem_center] bg-[size:1.25rem_1.25rem] bg-no-repeat ${
-                        errors.schoolingOption
-                          ? "border-red-500 focus:border-red-500 focus:ring-red-100"
-                          : "border-neutral-200 focus:border-brand-orange focus:ring-brand-orange/10"
-                      }`}
-                    >
-                      <option value="" disabled className="text-neutral-400">
-                        Selecting Schooling Option *
-                      </option>
-                      {SCHOOLING_OPTIONS.map((opt) => (
-                        <option key={opt} value={opt}>
-                          {opt}
-                        </option>
-                      ))}
-                    </select>
-                    {errors.schoolingOption && (
-                      <span className="text-red-500 text-xs font-semibold pl-1 font-gill">
-                        {errors.schoolingOption}
-                      </span>
-                    )}
-                  </div>
-                </div>
-
-                {/* Row 6: Captcha Generator Box & Input */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                  {/* Captcha display with random styling */}
-                  <div className="relative flex items-center justify-between bg-[#FAF9F6] border border-neutral-200 rounded-2xl px-5 py-2.5 h-[54px] select-none overflow-hidden shadow-sm">
-                    {/* SVG background with colorful shapes matching the image style */}
-                    <div className="absolute inset-0 z-0 opacity-20 pointer-events-none">
-                      <svg
-                        className="w-full h-full"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        {captchaBgSeed.map((circle, idx) => (
-                          <circle
-                            key={idx}
-                            cx={circle.x1 * 2}
-                            cy={circle.y1 * 1.5}
-                            r={circle.x2 / 2}
-                            fill={idx % 2 === 0 ? "#F48120" : "#00B7DD"}
-                          />
-                        ))}
-                      </svg>
-                    </div>
-
-                    {/* Generated Captcha characters */}
-                    <span
-                      className="text-xl md:text-2xl tracking-widest font-mono font-bold text-brand-navy relative z-10 flex space-x-1"
-                      style={{
-                        fontStyle: "italic",
-                        textDecoration: "line-through",
-                        textDecorationColor: "#F48120",
-                      }}
-                    >
-                      {captchaCode}
-                    </span>
-
-                    {/* Refresh captcha */}
-                    <button
-                      type="button"
-                      onClick={generateCaptcha}
-                      className="p-1 text-brand-navy/60 hover:text-brand-orange transition-colors duration-200 focus:outline-none relative z-10 group"
-                      title="Refresh Captcha"
-                    >
-                      <RotateCw
-                        size={18}
-                        className="group-hover:rotate-180 transition-transform duration-500"
-                      />
-                    </button>
-                  </div>
-
-                  <div className="flex flex-col space-y-1">
-                    <input
-                      type="text"
-                      placeholder="Captcha"
-                      value={formData.captchaInput}
-                      onChange={(e) =>
-                        handleInputChange("captchaInput", e.target.value)
-                      }
-                      className={`w-full px-5 py-3.5 bg-[#FAF9F6] border rounded-2xl text-[15px] font-gill font-medium text-brand-navy placeholder-neutral-400 transition-all duration-300 focus:outline-none focus:bg-white focus:ring-1 ${
-                        errors.captcha
-                          ? "border-red-500 focus:border-red-500 focus:ring-red-100"
-                          : "border-neutral-200 focus:border-brand-orange focus:ring-brand-orange/10"
-                      }`}
-                    />
-                    {errors.captcha && (
-                      <span className="text-red-500 text-xs font-semibold pl-1 font-gill">
-                        {errors.captcha}
-                      </span>
-                    )}
-                  </div>
-                </div>
-
-                {/* Row 7: Information Agreement Checkbox */}
-                <div className="flex flex-col space-y-1">
-                  <label className="flex items-start space-x-3 text-sm font-medium text-brand-black/90 cursor-pointer pt-2 select-none font-gill">
-                    <input
-                      type="checkbox"
-                      checked={formData.agreeToInfo}
-                      onChange={(e) =>
-                        handleInputChange("agreeToInfo", e.target.checked)
-                      }
-                      className="mt-1 w-4.5 h-4.5 text-brand-orange focus:ring-brand-orange border-neutral-300 rounded accent-brand-orange cursor-pointer"
-                    />
-                    <span className="text-[#4B5563] text-[14px] leading-relaxed font-medium">
-                      I agree to receive information regarding my submitted
-                      enquiry on{" "}
-                      <strong className="text-brand-navy font-bold">
-                        Pavna International School*
-                      </strong>
-                    </span>
-                  </label>
-                  {errors.agreeToInfo && (
-                    <span className="text-red-500 text-xs font-semibold pl-1 font-gill">
-                      {errors.agreeToInfo}
-                    </span>
-                  )}
-                </div>
-
-                {/* Row 8: SUBMIT button centered */}
-                <div className="flex justify-center pt-4">
-                  <button
-                    type="submit"
-                    disabled={isSubmitting}
-                    className="bg-brand-orange hover:bg-brand-dark-orange text-white text-[13px] font-bold tracking-wider uppercase px-12 py-4 rounded-full transition-all duration-300 shadow-md hover:shadow-lg active:scale-95 cursor-pointer disabled:opacity-75 disabled:cursor-not-allowed flex items-center justify-center space-x-2"
-                  >
-                    {isSubmitting ? (
-                      <>
-                        <svg
-                          className="animate-spin -ml-1 mr-3 h-5 w-5 text-white"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                        >
-                          <circle
-                            className="opacity-25"
-                            cx="12"
-                            cy="12"
-                            r="10"
-                            stroke="currentColor"
-                            strokeWidth="4"
-                          />
-                          <path
-                            className="opacity-75"
-                            fill="currentColor"
-                            d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                          />
-                        </svg>
-                        <span>Submitting...</span>
-                      </>
-                    ) : (
-                      <span>SUBMIT ENQUIRY</span>
-                    )}
-                  </button>
-                </div>
-              </form>
+              <div
+                className="npf_wgts w-full max-w-xl mx-auto"
+                data-height="520px"
+                data-w="d190862d64d81dadfab9679fed72ae68"
+                style={{ minHeight: "520px" }} // Standard heights backup layout shift rokne ke liye
+              ></div>
             </div>
           </div>
         </div>
