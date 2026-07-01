@@ -66,10 +66,12 @@ const UpperSecondary: FC = () => {
             transition={{ duration: 0.8 }}
             className="max-w-3xl"
           >
-            <h1 className="text-4xl md:text-[52px] lg:text-[52px] font-sans font-bold leading-tight md:leading-[58px] lg:leading-[58px] tracking-tight text-white mb-4">
-              Upper Secondary - IGCSE <br />
-              (Age 14 to 16 Years)
+            <h1 className="text-4xl md:text-[52px] lg:text-[52px] font-sans font-bold leading-tight md:leading-[58px] lg:leading-[58px] tracking-tight text-white mb-3">
+              Upper Secondary - IGCSE
             </h1>
+            <h4 className="text-[24px] md:text-[28px] font-sans font-bold tracking-tight text-white mb-4">
+              (Age 14 to 16 Years)
+            </h4>
             <p className="text-lg md:text-xl text-white/80 leading-relaxed font-light font-gill max-w-2xl">
               The world's most popular international qualification for 14 to 16
               year olds, providing a flexible curriculum and unmatched options.
