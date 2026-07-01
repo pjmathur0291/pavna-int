@@ -28,6 +28,10 @@ import Image5 from "../assets/images/Home/OverlayShadow-19.webp";
 import Image6 from "../assets/images/Home/OverlayShadow-20.webp";
 import Image7 from "../assets/images/Home/OverlayShadow-22.webp";
 import Image8 from "../assets/images/Home/image_60.webp";
+import Image9 from "../assets/images/Home/DSC06023.JPG.webp";
+import Image10 from "../assets/images/Home/DSC06058.JPG.webp";
+import Image11 from "../assets/images/Home/image_83.webp";
+import Image12 from "../assets/images/Home/image_60.webp";
 
 interface FacilityTab {
   id: string;
@@ -713,7 +717,7 @@ const BoardingPage: FC = () => {
                   {/* Card 1 */}
                   <div className="aspect-[4/5] w-[calc(50%-8px)] rounded-3xl overflow-hidden shadow-md shrink-0 relative group bg-neutral-50 border border-neutral-100">
                     <img
-                      src="https://i.postimg.cc/wBhhwbnz/DSC06023-JPG.jpg"
+                      src={Image9}
                       alt="Comfortable Boarding Dorm"
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                       referrerPolicy="no-referrer"
@@ -724,7 +728,7 @@ const BoardingPage: FC = () => {
                   {/* Card 2 */}
                   <div className="aspect-[4/5] w-[calc(50%-8px)] rounded-3xl overflow-hidden shadow-md shrink-0 relative group bg-neutral-50 border border-neutral-100">
                     <img
-                      src="https://i.postimg.cc/sgp9CzPy/DSC06065-JPG.jpg"
+                      src={Image10}
                       alt="Boarding Life Student Room"
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                       referrerPolicy="no-referrer"
@@ -735,7 +739,7 @@ const BoardingPage: FC = () => {
                   {/* Card 3 */}
                   <div className="aspect-[4/5] w-[calc(50%-8px)] rounded-3xl overflow-hidden shadow-md shrink-0 relative group bg-neutral-50 border border-neutral-100">
                     <img
-                      src="https://i.postimg.cc/d3PDNQ2X/image.png"
+                      src={Image11}
                       alt="Structured Study Area"
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                       referrerPolicy="no-referrer"
@@ -746,7 +750,7 @@ const BoardingPage: FC = () => {
                   {/* Card 4 */}
                   <div className="aspect-[4/5] w-[calc(50%-8px)] rounded-3xl overflow-hidden shadow-md shrink-0 relative group bg-neutral-50 border border-neutral-100">
                     <img
-                      src="https://i.postimg.cc/Y0TczjQg/Nursing-jpg.jpg"
+                      src={Image12}
                       alt="Professional On-Campus Medical and Healthcare Care"
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                       referrerPolicy="no-referrer"

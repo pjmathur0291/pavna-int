@@ -13,6 +13,7 @@ import Image6 from "../assets/images/Home/DSC05807.webp";
 import Image7 from "../assets/images/Home/DSC08428.webp";
 import Image8 from "../assets/images/Home/DSC08751.JPG.webp";
 import Image9 from "../assets/images/Home/DSC08559.webp";
+import Image10 from "../assets/images/Home/DSC08232.webp";
 
 const getItemDescription = (name: string): string => {
   const descriptions: Record<string, string> = {
@@ -64,7 +65,7 @@ const itemMediaMap: Record<
     subtitle: "Cambridge qualifications for 14-16",
   },
   "Advance - AS & A Level (Age 16 To 18 Years)": {
-    image: "https://i.postimg.cc/QtxZDymR/Advance.jpg",
+    image: Image10,
     title: "Advance Years",
     subtitle: "Pre-university international standard",
   },
