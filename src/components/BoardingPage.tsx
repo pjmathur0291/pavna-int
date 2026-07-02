@@ -151,15 +151,15 @@ const BoardingPage: FC = () => {
       image: Image2,
       icon: Snowflake,
     },
-    {
-      id: "apple-school",
-      tabTitle: "Apple Distinguished School",
-      heading: "Apple-Enabled Technology in Classrooms",
-      description:
-        "As an Apple Distinguished School, we fuel a premier learning environment through continuous innovation. By integrating Apple technology, we create transformative, interactive experiences that empower every student to lead and succeed in tomorrow’s world.",
-      image: Image3,
-      icon: Apple,
-    },
+    // {
+    //   id: "apple-school",
+    //   tabTitle: "Apple Distinguished School",
+    //   heading: "Apple-Enabled Technology in Classrooms",
+    //   description:
+    //     "As an Apple Distinguished School, we fuel a premier learning environment through continuous innovation. By integrating Apple technology, we create transformative, interactive experiences that empower every student to lead and succeed in tomorrow’s world.",
+    //   image: Image3,
+    //   icon: Apple,
+    // },
     {
       id: "sports-facilities",
       tabTitle: "State-of-the-Art Sports",
@@ -381,7 +381,7 @@ const BoardingPage: FC = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
               {
-                title: "World-class Curriculum: CBSE & Cambridge",
+                title: "World - class Cambridge  Curriculum",
                 desc: "",
                 icon: PurpleEducationIcon,
               },

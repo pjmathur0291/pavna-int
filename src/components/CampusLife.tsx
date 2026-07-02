@@ -54,7 +54,7 @@ const environmentImages = [
   Image22,
   Image21,
   Image20,
-  Image19,
+  // Image19,
   Image18,
   Image17,
   Image16,

@@ -37,7 +37,7 @@ const FEATURES = [
   },
 ];
 
-const IMAGES = [Image1, Image2, Image3, Image4, Image5, Image6, Image7, Image8];
+const IMAGES = [Image1, Image3, Image5, Image6, Image7, Image8];
 
 export default function BoardingSection() {
   const [currentIndex, setCurrentIndex] = useState(0);

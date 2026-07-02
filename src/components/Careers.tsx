@@ -1,6 +1,5 @@
 import { motion, AnimatePresence } from "motion/react";
 import React, { useEffect, useMemo, useState, FC } from "react";
-import { useNavigate } from "react-router-dom";
 import {
   Briefcase,
   GraduationCap,
@@ -22,10 +21,9 @@ import {
   X,
 } from "lucide-react";
 import Image1 from "../assets/images/Home/DSC06204.JPG.webp";
-const PRIMARY_EMAIL = "Hr@pavnaintlschool.com";
-const SECONDARY_EMAIL = "HEADMARKETING@pavnagroup.com";
+const PRIMARY_EMAIL = "rumameke@mailgolem.com";
+const SECONDARY_EMAIL = "rumameke@mailgolem.com";
 const Careers: FC = () => {
-  const navigate = useNavigate();
   const [showSuccessModal, setShowSuccessModal] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [fileObject, setFileObject] = useState<File | null>(null);
@@ -68,10 +66,8 @@ const Careers: FC = () => {
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const selectedFile = event.target.files?.[0];
     if (selectedFile) {
-      setFileObject(selectedFile); // स्टेट में फ़ाइल ऑब्जेक्ट को सुरक्षित करें
-      setFileName(selectedFile.name); // स्क्रीन पर फ़ाइल का नाम दिखाएँ
-
-      // एरर को साफ़ करें अगर पहले से कोई एरर था
+      setFileObject(selectedFile);
+      setFileName(selectedFile.name);
       if (errors.resume) {
         setErrors({ ...errors, resume: "" });
       }
@@ -89,7 +85,7 @@ const Careers: FC = () => {
     if (!formData.jobTitle.trim()) newErrors.jobTitle = "Job Title is required";
     if (!formData.message.trim()) newErrors.message = "Message is required";
     if (!formData.address.trim()) newErrors.address = "Address is required";
-    if (!fileObject) newErrors.resume = "Resume is required"; // अब यह सही से वैलिडेट होगा
+    if (!fileObject) newErrors.resume = "Resume is required";
     if (formData.captchaInput !== captchaCode)
       newErrors.captcha = "Invalid Captcha";
 
@@ -101,11 +97,9 @@ const Careers: FC = () => {
     setIsSubmitting(true);
 
     try {
-      // फ़ॉर्म सबमिट होने पर दोनों ईमेल पर डेटा और फ़ाइल भेजी जाएगी
       await sendFormSubmitEmail(PRIMARY_EMAIL, formData, fileObject);
       await sendFormSubmitEmail(SECONDARY_EMAIL, formData, fileObject);
 
-      // सब कुछ रिसेट करें
       setFormData(initialFormValues);
       setFileObject(null);
       setFileName("No file chosen");
@@ -132,8 +126,6 @@ const Careers: FC = () => {
       `New Job Application: ${data.jobTitle} - ${data.name}`,
     );
     dataToSend.append("_captcha", "false");
-
-    // फ़ॉर्म का डेटा
     dataToSend.append("Name", data.name);
     dataToSend.append("Email", data.email);
     dataToSend.append("Phone", data.phone);
@@ -142,7 +134,8 @@ const Careers: FC = () => {
     dataToSend.append("Address", data.address);
 
     if (file) {
-      dataToSend.append("Resume", file);
+      dataToSend.append("resume", file, file.name);
+      console.log("File appended:", file.name);
     } else {
       console.warn("No file provided to sendFormSubmitEmail function");
     }

@@ -55,21 +55,21 @@ export const CONTENT = {
     { name: "Campus Life", href: "#campus-life", hasDropdown: false },
     { name: "Boarding", href: "#boarding", hasDropdown: false },
     { name: "Admissions", href: "#admissions", hasDropdown: false },
-    {
-      name: "News & Media",
-      href: "#",
-      hasDropdown: true,
-      image: "src/assets/images/Home/DSC09241.webp",
-      groups: [
-        {
-          title: "Publications",
-          items: [
-            { name: "Blog", href: "#blog" },
-            { name: "Newsletter Archive", href: "#newsletter-archive" },
-          ],
-        },
-      ],
-    },
+    // {
+    //   name: "News & Media",
+    //   href: "#",
+    //   hasDropdown: true,
+    //   image: "src/assets/images/Home/DSC09241.webp",
+    //   groups: [
+    //     {
+    //       title: "Publications",
+    //       items: [
+    //         { name: "Blog", href: "#blog" },
+    //         { name: "Newsletter Archive", href: "#newsletter-archive" },
+    //       ],
+    //     },
+    //   ],
+    // },
     {
       name: "Contact Us",
       href: "#",
