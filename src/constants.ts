@@ -6,7 +6,7 @@ export const CONTENT = {
       name: "About",
       href: "#",
       hasDropdown: true,
-      image: "public/images/dsc05926.webp",
+      image: "/images/dsc05926.webp",
       groups: [
         {
           title: "About",
@@ -29,7 +29,7 @@ export const CONTENT = {
       name: "Curriculum",
       href: "#curriculum",
       hasDropdown: true,
-      image: "src/assets/images/Home/DSC06249.webp",
+      image: "/images/DSC06249.webp",
       groups: [
         {
           title: "Academic",
@@ -74,7 +74,7 @@ export const CONTENT = {
       name: "Contact Us",
       href: "#",
       hasDropdown: true,
-      image: "src/assets/images/Home/DSC09241.webp",
+      image: "/images/DSC09241.webp",
       groups: [
         {
           title: "Get In Touch",
