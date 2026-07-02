@@ -1,5 +1,6 @@
-import { FC, useState, useEffect, FormEvent, ChangeEvent } from "react";
 import { motion, AnimatePresence } from "motion/react";
+import React, { useEffect, useMemo, useState, FC } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   Briefcase,
   GraduationCap,
@@ -21,162 +22,151 @@ import {
   X,
 } from "lucide-react";
 import Image1 from "../assets/images/Home/DSC06204.JPG.webp";
-
+const PRIMARY_EMAIL = "Hr@pavnaintlschool.com";
+const SECONDARY_EMAIL = "HEADMARKETING@pavnagroup.com";
 const Careers: FC = () => {
-  // Form State
-  const [formData, setFormData] = useState({
+  const navigate = useNavigate();
+  const [showSuccessModal, setShowSuccessModal] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [fileObject, setFileObject] = useState<File | null>(null);
+  const [fileName, setFileName] = useState("No file chosen");
+
+  // Captcha Dummy Seeds
+  const [captchaCode, setCaptchaCode] = useState("A59X");
+  const captchaBgSeed = [
+    { x1: 10, y1: 20, x2: 15, y2: 15 },
+    { x1: 40, y1: 10, x2: 25, y2: 20 },
+  ];
+
+  // Initial State
+  const initialFormValues = {
     name: "",
     email: "",
     phone: "",
     jobTitle: "",
     message: "",
+    resume: "",
     address: "",
-    resumeFile: null as File | null,
     captchaInput: "",
-  });
-
-  const [fileName, setFileName] = useState("No file chosen");
-
-  // Captcha State
-  const [captchaCode, setCaptchaCode] = useState("");
-  const [captchaBgSeed, setCaptchaBgSeed] = useState<
-    { x1: number; y1: number; x2: number; y2: number }[]
-  >([]);
-
-  // Feedback States
-  const [errors, setErrors] = useState<Record<string, string>>({});
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [showSuccessModal, setShowSuccessModal] = useState(false);
-
-  // Generate Captcha Code
-  const generateCaptcha = () => {
-    const chars = "abcdefghijklmnopqrstuvwxyz0123456789";
-    let code = "";
-    for (let i = 0; i < 6; i++) {
-      code += chars.charAt(Math.floor(Math.random() * chars.length));
-    }
-    setCaptchaCode(code);
-
-    const circles = [];
-    for (let i = 0; i < 3; i++) {
-      circles.push({
-        x1: Math.floor(Math.random() * 80) + 10,
-        y1: Math.floor(Math.random() * 25) + 5,
-        x2: Math.floor(Math.random() * 20) + 15,
-        y2: Math.floor(Math.random() * 20) + 15,
-      });
-    }
-    setCaptchaBgSeed(circles);
-    setErrors((prev) => ({ ...prev, captcha: "" }));
   };
 
-  useEffect(() => {
-    generateCaptcha();
-  }, []);
+  const [formData, setFormData] = useState(initialFormValues);
+  const [errors, setErrors] = useState<Record<string, string>>({});
+
+  const generateCaptcha = () => {
+    setCaptchaCode(Math.random().toString(36).substring(2, 6).toUpperCase());
+  };
 
   const handleInputChange = (field: string, value: string) => {
-    setFormData((prev) => ({ ...prev, [field]: value }));
+    setFormData({ ...formData, [field]: value });
     if (errors[field]) {
-      setErrors((prev) => ({ ...prev, [field]: "" }));
+      setErrors({ ...errors, [field]: "" });
     }
   };
 
-  const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (file) {
-      if (file.size > 5 * 1024 * 1024) {
-        setErrors((prev) => ({
-          ...prev,
-          resume: "File size exceeds 5MB limit",
-        }));
-        setFileName("No file chosen");
-        setFormData((prev) => ({ ...prev, resumeFile: null }));
-        return;
+  // यहाँ सुधार किया गया है:
+  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const selectedFile = event.target.files?.[0];
+    if (selectedFile) {
+      setFileObject(selectedFile); // स्टेट में फ़ाइल ऑब्जेक्ट को सुरक्षित करें
+      setFileName(selectedFile.name); // स्क्रीन पर फ़ाइल का नाम दिखाएँ
+
+      // एरर को साफ़ करें अगर पहले से कोई एरर था
+      if (errors.resume) {
+        setErrors({ ...errors, resume: "" });
       }
-      const fileExt = file.name.split(".").pop()?.toLowerCase();
-      if (fileExt !== "pdf" && fileExt !== "doc" && fileExt !== "docx") {
-        setErrors((prev) => ({
-          ...prev,
-          resume: "Only PDF and DOC formats are supported",
-        }));
-        setFileName("No file chosen");
-        setFormData((prev) => ({ ...prev, resumeFile: null }));
-        return;
-      }
-
-      setFileName(file.name);
-      setFormData((prev) => ({ ...prev, resumeFile: file }));
-      setErrors((prev) => ({ ...prev, resume: "" }));
-    } else {
-      setFileName("No file chosen");
-      setFormData((prev) => ({ ...prev, resumeFile: null }));
     }
   };
 
-  const validateForm = () => {
-    const newErrors: Record<string, string> = {};
-
-    if (!formData.name.trim()) newErrors.name = "Name is required";
-
-    if (!formData.email.trim()) {
-      newErrors.email = "Email is required";
-    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email.trim())) {
-      newErrors.email = "Enter a valid email address";
-    }
-
-    if (!formData.phone.trim()) {
-      newErrors.phone = "Phone number is required";
-    } else if (
-      !/^\+?\d{10,14}$/.test(formData.phone.trim().replace(/[\s-()]/g, ""))
-    ) {
-      newErrors.phone = "Enter a valid phone number";
-    }
-
-    if (!formData.jobTitle.trim()) {
-      newErrors.jobTitle = "Job Title is required";
-    }
-
-    if (!formData.resumeFile) {
-      newErrors.resume = "Please upload your resume";
-    }
-
-    if (!formData.captchaInput.trim()) {
-      newErrors.captcha = "Captcha is required";
-    } else if (
-      formData.captchaInput.trim().toLowerCase() !== captchaCode.toLowerCase()
-    ) {
-      newErrors.captcha = "Invalid captcha code";
-    }
-
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
-  };
-
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (validateForm()) {
-      setIsSubmitting(true);
+    if (isSubmitting) return;
 
-      // Simulate API submit
-      setTimeout(() => {
-        setIsSubmitting(false);
-        setShowSuccessModal(true);
-        // Reset Form
-        setFormData({
-          name: "",
-          email: "",
-          phone: "",
-          jobTitle: "",
-          message: "",
-          address: "",
-          resumeFile: null,
-          captchaInput: "",
-        });
-        setFileName("No file chosen");
-        generateCaptcha();
-      }, 1500);
+    const newErrors: Record<string, string> = {};
+    if (!formData.name.trim()) newErrors.name = "Name is required";
+    if (!formData.email.trim()) newErrors.email = "Email is required";
+    if (!formData.phone.trim()) newErrors.phone = "Phone is required";
+    if (!formData.jobTitle.trim()) newErrors.jobTitle = "Job Title is required";
+    if (!formData.message.trim()) newErrors.message = "Message is required";
+    if (!formData.address.trim()) newErrors.address = "Address is required";
+    if (!fileObject) newErrors.resume = "Resume is required"; // अब यह सही से वैलिडेट होगा
+    if (formData.captchaInput !== captchaCode)
+      newErrors.captcha = "Invalid Captcha";
+
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors);
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    try {
+      // फ़ॉर्म सबमिट होने पर दोनों ईमेल पर डेटा और फ़ाइल भेजी जाएगी
+      await sendFormSubmitEmail(PRIMARY_EMAIL, formData, fileObject);
+      await sendFormSubmitEmail(SECONDARY_EMAIL, formData, fileObject);
+
+      // सब कुछ रिसेट करें
+      setFormData(initialFormValues);
+      setFileObject(null);
+      setFileName("No file chosen");
+      generateCaptcha();
+      setShowSuccessModal(true);
+    } catch (error) {
+      console.error("Submission failed", error);
+    } finally {
+      setIsSubmitting(false);
     }
   };
+
+  async function sendFormSubmitEmail(
+    email: string,
+    data: any,
+    file: File | null,
+  ) {
+    console.log("Selected file inside function:", file);
+
+    const dataToSend = new FormData();
+
+    dataToSend.append(
+      "_subject",
+      `New Job Application: ${data.jobTitle} - ${data.name}`,
+    );
+    dataToSend.append("_captcha", "false");
+
+    // फ़ॉर्म का डेटा
+    dataToSend.append("Name", data.name);
+    dataToSend.append("Email", data.email);
+    dataToSend.append("Phone", data.phone);
+    dataToSend.append("Job Title", data.jobTitle);
+    dataToSend.append("Message", data.message);
+    dataToSend.append("Address", data.address);
+
+    if (file) {
+      dataToSend.append("Resume", file);
+    } else {
+      console.warn("No file provided to sendFormSubmitEmail function");
+    }
+
+    dataToSend.append("Submitted From Page", window.location.href);
+    dataToSend.append("Submission Date", new Date().toLocaleString());
+
+    const response = await fetch(
+      `https://formsubmit.co/ajax/${encodeURIComponent(email)}`,
+      {
+        method: "POST",
+        body: dataToSend,
+      },
+    );
+
+    if (!response.ok) {
+      const errorText = await response.text();
+      console.error("FormSubmit Error:", errorText);
+      throw new Error("Failed to send email via FormSubmit");
+    }
+
+    const result = await response.json();
+    console.log("FormSubmit Success:", result);
+  }
 
   return (
     <div
@@ -300,11 +290,11 @@ const Careers: FC = () => {
               {/* Name */}
               <div className="flex flex-col space-y-2">
                 <label className="text-[14px] font-serif font-bold text-brand-navy">
-                  Name
+                  Name <span className="text-red-400">*</span>
                 </label>
                 <input
                   type="text"
-                  placeholder="Name *"
+                  placeholder="Name"
                   value={formData.name}
                   onChange={(e) => handleInputChange("name", e.target.value)}
                   className={`w-full px-5 py-3.5 bg-[#FAF9F6] border rounded-2xl text-[15px] font-gill font-medium text-brand-navy placeholder-neutral-400 transition-all duration-300 focus:outline-none focus:bg-white focus:ring-1 ${
@@ -323,11 +313,11 @@ const Careers: FC = () => {
               {/* Email */}
               <div className="flex flex-col space-y-2">
                 <label className="text-[14px] font-serif font-bold text-brand-navy">
-                  Email
+                  Email<span className="text-red-400">*</span>
                 </label>
                 <input
                   type="email"
-                  placeholder="Email *"
+                  placeholder="Email"
                   value={formData.email}
                   onChange={(e) => handleInputChange("email", e.target.value)}
                   className={`w-full px-5 py-3.5 bg-[#FAF9F6] border rounded-2xl text-[15px] font-gill font-medium text-brand-navy placeholder-neutral-400 transition-all duration-300 focus:outline-none focus:bg-white focus:ring-1 ${
@@ -346,11 +336,11 @@ const Careers: FC = () => {
               {/* Phone */}
               <div className="flex flex-col space-y-2">
                 <label className="text-[14px] font-serif font-bold text-brand-navy">
-                  Phone
+                  Phone<span className="text-red-400">*</span>
                 </label>
                 <input
                   type="tel"
-                  placeholder="Phone *"
+                  placeholder="Phone"
                   value={formData.phone}
                   onChange={(e) => handleInputChange("phone", e.target.value)}
                   className={`w-full px-5 py-3.5 bg-[#FAF9F6] border rounded-2xl text-[15px] font-gill font-medium text-brand-navy placeholder-neutral-400 transition-all duration-300 focus:outline-none focus:bg-white focus:ring-1 ${
@@ -369,7 +359,7 @@ const Careers: FC = () => {
               {/* Job Title */}
               <div className="flex flex-col space-y-2">
                 <label className="text-[14px] font-serif font-bold text-brand-navy">
-                  Job Title
+                  Job Title <span className="text-red-400">*</span>
                 </label>
                 <input
                   type="text"
@@ -394,38 +384,61 @@ const Careers: FC = () => {
               {/* Message */}
               <div className="flex flex-col space-y-2">
                 <label className="text-[14px] font-serif font-bold text-brand-navy">
-                  Message
+                  Message <span className="text-red-400">*</span>
                 </label>
                 <textarea
                   rows={4}
                   placeholder="Message"
                   value={formData.message}
                   onChange={(e) => handleInputChange("message", e.target.value)}
-                  className="w-full px-5 py-3.5 bg-[#FAF9F6] border border-neutral-200 rounded-2xl text-[15px] font-gill font-medium text-brand-navy placeholder-neutral-400 transition-all duration-300 focus:outline-none focus:bg-white focus:ring-1 focus:border-brand-orange focus:ring-brand-orange/10"
+                  className={`w-full px-5 py-3.5 bg-[#FAF9F6] border rounded-2xl text-[15px] font-gill font-medium text-brand-navy placeholder-neutral-400 transition-all duration-300 focus:outline-none focus:bg-white focus:ring-1 ${
+                    errors.message
+                      ? "border-red-500 focus:border-red-500 focus:ring-red-100"
+                      : "border-neutral-200 focus:border-brand-orange focus:ring-brand-orange/10"
+                  }`}
                 />
+                {errors.message && (
+                  <span className="text-red-500 text-xs font-semibold pl-1 font-gill">
+                    {errors.message}
+                  </span>
+                )}
               </div>
 
               {/* Address */}
               <div className="flex flex-col space-y-2">
                 <label className="text-[14px] font-serif font-bold text-brand-navy">
-                  Address
+                  Address<span className="text-red-400">*</span>
                 </label>
                 <textarea
                   rows={3}
                   placeholder="Address"
                   value={formData.address}
                   onChange={(e) => handleInputChange("address", e.target.value)}
-                  className="w-full px-5 py-3.5 bg-[#FAF9F6] border border-neutral-200 rounded-2xl text-[15px] font-gill font-medium text-brand-navy placeholder-neutral-400 transition-all duration-300 focus:outline-none focus:bg-white focus:ring-1 focus:border-brand-orange focus:ring-brand-orange/10"
+                  className={`w-full px-5 py-3.5 bg-[#FAF9F6] border rounded-2xl text-[15px] font-gill font-medium text-brand-navy placeholder-neutral-400 transition-all duration-300 focus:outline-none focus:bg-white focus:ring-1 ${
+                    errors.address
+                      ? "border-red-500 focus:border-red-500 focus:ring-red-100"
+                      : "border-neutral-200 focus:border-brand-orange focus:ring-brand-orange/10"
+                  }`}
                 />
+                {errors.address && (
+                  <span className="text-red-500 text-xs font-semibold pl-1 font-gill">
+                    {errors.address}
+                  </span>
+                )}
               </div>
 
-              {/* Resume File Upload */}
               <div className="flex flex-col space-y-2">
                 <label className="text-[14px] font-serif font-bold text-brand-navy">
-                  Resume
+                  Resume<span className="text-red-400">*</span>
                 </label>
 
-                <div className="flex flex-col sm:flex-row sm:items-center gap-4 p-5 bg-[#FAF9F6] border border-dashed border-neutral-200 rounded-2xl transition-all duration-300 hover:border-brand-orange/40">
+                <div
+                  className={`flex flex-col sm:flex-row sm:items-center gap-4 p-5 bg-[#FAF9F6] border border-dashed rounded-2xl transition-all duration-300 ${
+                    errors.resume
+                      ? "border-red-500 bg-red-50/10"
+                      : "border-neutral-200 hover:border-brand-orange/40"
+                  }`}
+                >
                   <label className="cursor-pointer bg-brand-navy hover:bg-brand-navy/90 text-white text-xs font-bold uppercase tracking-wider px-5 py-3 rounded-xl transition-all duration-300 shrink-0 inline-flex items-center gap-2 shadow-sm hover:shadow-md active:scale-98">
                     <UploadCloud size={16} />
                     <span>Choose File</span>
@@ -434,6 +447,7 @@ const Careers: FC = () => {
                       accept=".pdf,.doc,.docx"
                       onChange={handleFileChange}
                       className="hidden"
+                      name="resume"
                     />
                   </label>
 
@@ -452,8 +466,7 @@ const Careers: FC = () => {
                   </span>
                 )}
               </div>
-
-              {/* Interactive Captcha Verification for SPAM protection */}
+              {/* Captcha Verification */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 pt-2">
                 <div className="relative flex items-center justify-between bg-[#FAF9F6] border border-neutral-200 rounded-2xl px-5 py-2.5 h-[54px] select-none overflow-hidden shadow-sm">
                   <div className="absolute inset-0 z-0 opacity-20 pointer-events-none">

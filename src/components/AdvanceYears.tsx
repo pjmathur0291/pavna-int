@@ -180,8 +180,8 @@ const AdvanceYears: FC = () => {
                 institutes.
               </p>
               <p className="text-[#4B5563] text-[16px] leading-[24px] font-medium font-gill">
-                According to the Association ,{""} A Level is equivalent to a +2
-                stage certificate from an Indian board, allowing students to
+                According to the Association ,&nbsp; A Level is equivalent to a
+                +2 stage certificate from an Indian board, allowing students to
                 enrol in bachelor's degree programs in Indian universities.
               </p>
             </div>
