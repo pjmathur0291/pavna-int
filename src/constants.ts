@@ -6,7 +6,7 @@ export const CONTENT = {
       name: "About",
       href: "#",
       hasDropdown: true,
-      image: "src/assets/images/Home/DSC05926.webp",
+      image: "src/assets/images/Home/dsc05926.webp",
       groups: [
         {
           title: "About",
