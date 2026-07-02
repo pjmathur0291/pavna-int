@@ -24,7 +24,7 @@ const ITEMS: DistinctionItem[] = [
     id: "ai-robotics",
     category: "STEM & FUTURE SKILLS",
     title: "AI & Robotics",
-    subtitle: "Nurturing modern innovation and critical STEM problem-solving",
+    subtitle: "Cultivating innovation, creativity, and STEM problem-solving",
     icon: <Cpu className="w-5 h-5" />,
     iconBg: "bg-orange-50",
     iconColor: "text-brand-orange",
@@ -35,11 +35,11 @@ const ITEMS: DistinctionItem[] = [
       "Hands-on Practical Tinkering",
     ],
     paragraph1: [
-      "best international school in Sasni",
-      "Equips students with future-ready skills through its AI & Robotics program. As a leading",
+      "At Pavna International School",
+      "students explore the possibilities of artificial intelligence and robotics through hands-on, inquiry-driven learning.",
     ],
     paragraph2:
-      "With access to modern international school facilities, students explore emerging technologies, develop critical thinking skills, and gain practical experience to thrive in a technology-driven world.",
+      "Supported by contemporary learning spaces and expert mentorship, they develop computational thinking, creativity, and the confidence to apply technology thoughtfully to solve real-world challenges.",
   },
   {
     id: "sports-excellence",
@@ -195,11 +195,13 @@ export default function WhatSetsUsApart() {
                 {/* Content text */}
                 <div className="space-y-4 text-gray-650 text-sm sm:text-[16px] leading-relaxed font-medium">
                   <p>
-                    As one of the{" "}
+                    {currentItem.id !== "ai-robotics" && "As one of the"}{" "}
                     <strong className="text-brand-navy font-bold">
                       {currentItem.paragraph1[0]}
                     </strong>
-                    , Pavna International School {currentItem.paragraph1[1]}{" "}
+                    {currentItem.id !== "ai-robotics" &&
+                      ", Pavna International School"}{" "}
+                    {currentItem.paragraph1[1]}{" "}
                     {currentItem.id === "sports-excellence" && (
                       <strong className="text-brand-navy font-bold">
                         horse riding, swimming, cricket, handball, lawn tennis,

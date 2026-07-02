@@ -174,12 +174,12 @@ export default function AboutSection() {
             </div>
 
             <p className="text-gray-600 text-[16px] leading-[24px] font-medium mb-6 max-w-2xl text-left mx-0">
-              For nearly three decades, Pavna has been quietly raising a
-              different kind of student, one who thinks independently, leads
-              with empathy, and walks into the world ready for it. As one of the
-              most respected international curriculum schools in Uttar Pradesh,
-              we blend rigorous academics with the warmth of a true school
-              community.
+              For nearly three decades, Pavna has been quietly shaping
+              confident, compassionate young people who think independently,
+              lead with empathy, and are prepared to flourish in a complex and
+              interconnected world. As one of the most respected international
+              curriculum schools in Uttar Pradesh, we combine academic rigour
+              with the warmth and values of a close-knit community.
             </p>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-0 w-full">

@@ -64,12 +64,11 @@ export default function CambridgeSection() {
             className="lg:col-span-7"
           >
             <p className="text-[16px] text-[#4B5563] leading-[24px] font-medium lg:pl-6 lg:border-l-2 lg:border-gray-100 font-gill max-w-2xl mb-0 lg:mb-12 text-left mx-0">
-              At Pavna International School, we deliver a world-class Cambridge
-              International Education that inspires curiosity, critical
-              thinking, creativity, and academic excellence. Through globally
-              benchmarked learning experiences, students develop the confidence,
-              knowledge, and future-ready skills needed to thrive in an
-              ever-evolving world.
+              At Pavna International School, we provide a Cambridge
+              International education that inspires intellectual curiosity,
+              creative thinking, and academic excellence. Through engaging and
+              globally recognised learning experiences, students grow into
+              confident, reflective, and responsible citizens of the world.
             </p>
           </motion.div>
         </div>

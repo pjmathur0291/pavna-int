@@ -89,13 +89,14 @@ export default function HeroSlider() {
                     className="transition-transform duration-300 group-hover:translate-x-1"
                   />
                 </motion.a>
-                <motion.button
+                <motion.a
+                  href="#campus-life"
                   whileHover={{ scale: 1.02, y: -2 }}
                   whileTap={{ scale: 0.98 }}
                   className="w-full sm:w-auto inline-flex items-center justify-center px-6 sm:px-8 py-3.5 bg-transparent border border-white/30 text-white text-[11px] font-bold uppercase tracking-widest hover:bg-white hover:text-[#201A5B] transition-all duration-300 shadow-sm rounded-[4px] whitespace-nowrap cursor-pointer"
                 >
                   View Campus
-                </motion.button>
+                </motion.a>
               </motion.div>
             </div>
           </div>
