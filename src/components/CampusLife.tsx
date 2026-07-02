@@ -47,14 +47,15 @@ import Image24 from "../assets/images/Home/admin block 4.webp";
 import Image25 from "../assets/images/Home/admin block 3.webp";
 import Image26 from "../assets/images/Home/admin block 2.webp";
 import Image27 from "../assets/images/Home/admin block 1.webp";
+import Image28 from "../assets/images/Home/admin block 5.webp";
 
-const adminImages = [Image27, Image26, Image25, Image24, Image23];
+const adminImages = [Image27, Image26, Image25, Image24, Image23, Image28];
 
 const environmentImages = [
   Image22,
   Image21,
   Image20,
-  // Image19,
+  Image19,
   Image18,
   Image17,
   Image16,
