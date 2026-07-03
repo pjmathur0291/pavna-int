@@ -266,10 +266,11 @@ const PavnaEcosystem: FC = () => {
               <ul className="pl-4 list-none relative text-[#333333] text-base line-height-[1.375]">
                 <li className="relative mb-1.5 before:content-[''] before:absolute before:-left-4 before:top-[0.4rem] before:w-1.5 before:h-1.5 before:bg-[#202547] before:rounded-full">
                   <strong className="text-[#00a99d] underline underline-offset-2 decoration-1">
-                    Inquiry based learning
+                    Expertise Learning
                   </strong>{" "}
-                  - teacher training programs are in progress. Year long
-                  calendar
+                  - The Cambridge curriculum emphasizes "learning by doing"
+                  through hands-on activities, real-world projects, and
+                  reflective learning.
                 </li>
                 <li className="relative mb-1.5 before:content-[''] before:absolute before:-left-4 before:top-[0.4rem] before:w-1.5 before:h-1.5 before:bg-[#202547] before:rounded-full">
                   Introducing Montessori system!

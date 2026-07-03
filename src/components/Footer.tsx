@@ -57,15 +57,13 @@ const Footer: FC = () => {
               </a>
 
               {/* Download Brochure Premium Card Button */}
-              {/* <a
-                href="https://pavnaintlschool.campuscare.cloud/"
-                target="_blank"
-                rel="noopener noreferrer"
+              <a
+                href="#lets-talk"
                 className="group/btn relative flex items-center justify-between bg-white/5 border border-white/10 text-white p-5 md:p-6 rounded-[8px] hover:border-brand-sky hover:bg-brand-sky/20 transition-all duration-300 transform hover:-translate-y-1 backdrop-blur-md"
               >
                 <div className="flex flex-col text-left">
                   <span className="text-sm md:text-base font-bold uppercase tracking-widest mb-1">
-                    Apply Online
+                    Download Brochure
                   </span>
                   <span className="text-xs text-gray-400 font-medium group-hover/btn:text-brand-sky transition-colors">
                     Explore our curriculum & campus
@@ -74,7 +72,7 @@ const Footer: FC = () => {
                 <div className="w-12 h-12 border border-white/10 bg-white/5 rounded-full flex items-center justify-center group-hover/btn:border-brand-sky group-hover/btn:bg-brand-sky group-hover/btn:text-white transition-colors duration-300">
                   <i className="fas fa-download transform group-hover/btn:-translate-y-1 transition-transform duration-300"></i>
                 </div>
-              </a> */}
+              </a>
             </div>
           </div>
         </div>
@@ -88,7 +86,7 @@ const Footer: FC = () => {
         <div className="container mx-auto px-8 relative z-10">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-16 mb-16 border-b border-white/10 pb-16">
             {/* Column 1: Brand */}
-            <div className="md:col-span-4 lg:col-span-4">
+            <div className="md:col-span-6 lg:col-span-3">
               <div className="mb-6 bg-white inline-block p-3.5 rounded-[4px] border border-white/10 shadow-lg">
                 <img
                   src={logo}
@@ -162,7 +160,7 @@ const Footer: FC = () => {
             </div>
 
             {/* Column 2: Quick Links */}
-            <div className="md:col-span-2 lg:col-span-2">
+            <div className="md:col-span-6 lg:col-span-2">
               <h4 className="font-bold mb-8 uppercase tracking-widest text-[11px] text-white flex items-center">
                 <span className="w-2 h-2 bg-brand-orange rounded-full mr-3 shadow-glow"></span>{" "}
                 The School
@@ -176,7 +174,40 @@ const Footer: FC = () => {
                     <span className="w-0 group-hover:w-2 transition-all duration-300 overflow-hidden text-brand-orange mr-0 group-hover:mr-2">
                       -
                     </span>{" "}
-                    About Us
+                    About PIS
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#academic-team"
+                    className="text-gray-400 hover:text-brand-orange transition-all duration-300 flex items-center group"
+                  >
+                    <span className="w-0 group-hover:w-2 transition-all duration-300 overflow-hidden text-brand-orange mr-0 group-hover:mr-2">
+                      -
+                    </span>{" "}
+                    Academic Team
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#chairmans-message"
+                    className="text-gray-400 hover:text-brand-orange transition-all duration-300 flex items-center group"
+                  >
+                    <span className="w-0 group-hover:w-2 transition-all duration-300 overflow-hidden text-brand-orange mr-0 group-hover:mr-2">
+                      -
+                    </span>{" "}
+                    Chairman's Message
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#principals-message"
+                    className="text-gray-400 hover:text-brand-orange transition-all duration-300 flex items-center group"
+                  >
+                    <span className="w-0 group-hover:w-2 transition-all duration-300 overflow-hidden text-brand-orange mr-0 group-hover:mr-2">
+                      -
+                    </span>{" "}
+                    Principal's Message
                   </a>
                 </li>
                 <li>
@@ -187,7 +218,7 @@ const Footer: FC = () => {
                     <span className="w-0 group-hover:w-2 transition-all duration-300 overflow-hidden text-brand-orange mr-0 group-hover:mr-2">
                       -
                     </span>{" "}
-                    Leadership
+                    Leadership Team
                   </a>
                 </li>
                 <li>
@@ -201,98 +232,165 @@ const Footer: FC = () => {
                     Careers
                   </a>
                 </li>
+              </ul>
+            </div>
+
+            {/* Column 3: Academics */}
+            <div className="md:col-span-6 lg:col-span-2">
+              <h4 className="font-bold mb-8 uppercase tracking-widest text-[11px] text-white flex items-center">
+                <span className="w-2 h-2 bg-brand-sky rounded-full mr-3 shadow-[0_0_10px_rgba(0,183,221,0.5)]"></span>{" "}
+                Academics
+              </h4>
+              <ul className="space-y-4 text-[13px]">
                 <li>
                   <a
-                    href="#admissions"
-                    className="text-gray-400 hover:text-brand-orange transition-all duration-300 flex items-center group"
+                    href="#curriculum"
+                    className="text-gray-400 hover:text-brand-sky transition-all duration-300 flex items-center group"
                   >
-                    <span className="w-0 group-hover:w-2 transition-all duration-300 overflow-hidden text-brand-orange mr-0 group-hover:mr-2">
+                    <span className="w-0 group-hover:w-2 transition-all duration-300 overflow-hidden text-brand-sky mr-0 group-hover:mr-2">
                       -
                     </span>{" "}
-                    Policies
+                    Curriculum
                   </a>
                 </li>
                 <li>
                   <a
-                    href="#contact-us"
-                    className="text-gray-400 hover:text-brand-orange transition-all duration-300 flex items-center group"
+                    href="#early-years"
+                    className="text-gray-400 hover:text-brand-sky transition-all duration-300 flex items-center group"
                   >
-                    <span className="w-0 group-hover:w-2 transition-all duration-300 overflow-hidden text-brand-orange mr-0 group-hover:mr-2">
+                    <span className="w-0 group-hover:w-2 transition-all duration-300 overflow-hidden text-brand-sky mr-0 group-hover:mr-2">
                       -
                     </span>{" "}
-                    Contact
+                    Early Years
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#primary"
+                    className="text-gray-400 hover:text-brand-sky transition-all duration-300 flex items-center group"
+                  >
+                    <span className="w-0 group-hover:w-2 transition-all duration-300 overflow-hidden text-brand-sky mr-0 group-hover:mr-2">
+                      -
+                    </span>{" "}
+                    Primary
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#lower-secondary"
+                    className="text-gray-400 hover:text-brand-sky transition-all duration-300 flex items-center group"
+                  >
+                    <span className="w-0 group-hover:w-2 transition-all duration-300 overflow-hidden text-brand-sky mr-0 group-hover:mr-2">
+                      -
+                    </span>{" "}
+                    Lower Secondary
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#upper-secondary"
+                    className="text-gray-400 hover:text-brand-sky transition-all duration-300 flex items-center group"
+                  >
+                    <span className="w-0 group-hover:w-2 transition-all duration-300 overflow-hidden text-brand-sky mr-0 group-hover:mr-2">
+                      -
+                    </span>{" "}
+                    Upper Secondary
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#advance-as-a-level"
+                    className="text-gray-400 hover:text-brand-sky transition-all duration-300 flex items-center group"
+                  >
+                    <span className="w-0 group-hover:w-2 transition-all duration-300 overflow-hidden text-brand-sky mr-0 group-hover:mr-2">
+                      -
+                    </span>{" "}
+                    AS & A Level
                   </a>
                 </li>
               </ul>
             </div>
 
-            {/* Column 3: Admissions */}
-            <div className="md:col-span-2 lg:col-span-2">
+            {/* Column 4: Admissions & Experience */}
+            <div className="md:col-span-6 lg:col-span-2">
               <h4 className="font-bold mb-8 uppercase tracking-widest text-[11px] text-white flex items-center">
-                <span className="w-2 h-2 bg-brand-sky rounded-full mr-3 shadow-[0_0_10px_rgba(0,183,221,0.5)]"></span>{" "}
-                Admissions
+                <span className="w-2 h-2 bg-brand-yellow rounded-full mr-3 shadow-[0_0_10px_rgba(255,202,5,0.5)]"></span>{" "}
+                Experience
               </h4>
               <ul className="space-y-4 text-[13px]">
                 <li>
                   <a
                     href="#admissions"
-                    className="text-gray-400 hover:text-brand-sky transition-all duration-300 flex items-center group"
+                    className="text-gray-400 hover:text-brand-yellow transition-all duration-300 flex items-center group"
                   >
-                    <span className="w-0 group-hover:w-2 transition-all duration-300 overflow-hidden text-brand-sky mr-0 group-hover:mr-2">
+                    <span className="w-0 group-hover:w-2 transition-all duration-300 overflow-hidden text-brand-yellow mr-0 group-hover:mr-2">
                       -
                     </span>{" "}
-                    Apply Now
+                    Admissions
                   </a>
                 </li>
                 <li>
                   <a
-                    href="#admissions"
-                    className="text-gray-400 hover:text-brand-sky transition-all duration-300 flex items-center group"
+                    href="#boarding"
+                    className="text-gray-400 hover:text-brand-yellow transition-all duration-300 flex items-center group"
                   >
-                    <span className="w-0 group-hover:w-2 transition-all duration-300 overflow-hidden text-brand-sky mr-0 group-hover:mr-2">
+                    <span className="w-0 group-hover:w-2 transition-all duration-300 overflow-hidden text-brand-yellow mr-0 group-hover:mr-2">
                       -
                     </span>{" "}
-                    Fee Structure
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="#admissions"
-                    className="text-gray-400 hover:text-brand-sky transition-all duration-300 flex items-center group"
-                  >
-                    <span className="w-0 group-hover:w-2 transition-all duration-300 overflow-hidden text-brand-sky mr-0 group-hover:mr-2">
-                      -
-                    </span>{" "}
-                    Scholarships
+                    Boarding Life
                   </a>
                 </li>
                 <li>
                   <a
                     href="#campus-life"
-                    className="text-gray-400 hover:text-brand-sky transition-all duration-300 flex items-center group"
+                    className="text-gray-400 hover:text-brand-yellow transition-all duration-300 flex items-center group"
                   >
-                    <span className="w-0 group-hover:w-2 transition-all duration-300 overflow-hidden text-brand-sky mr-0 group-hover:mr-2">
+                    <span className="w-0 group-hover:w-2 transition-all duration-300 overflow-hidden text-brand-yellow mr-0 group-hover:mr-2">
                       -
                     </span>{" "}
-                    Campus Tour
+                    Campus Life
                   </a>
                 </li>
                 <li>
                   <a
-                    href="#faq-section"
-                    className="text-gray-400 hover:text-brand-sky transition-all duration-300 flex items-center group"
+                    href="#enquire-now"
+                    className="text-gray-400 hover:text-brand-yellow transition-all duration-300 flex items-center group"
                   >
-                    <span className="w-0 group-hover:w-2 transition-all duration-300 overflow-hidden text-brand-sky mr-0 group-hover:mr-2">
+                    <span className="w-0 group-hover:w-2 transition-all duration-300 overflow-hidden text-brand-yellow mr-0 group-hover:mr-2">
                       -
                     </span>{" "}
-                    FAQs
+                    Enquire Now
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#lets-talk"
+                    className="text-gray-400 hover:text-brand-yellow transition-all duration-300 flex items-center group"
+                  >
+                    <span className="w-0 group-hover:w-2 transition-all duration-300 overflow-hidden text-brand-yellow mr-0 group-hover:mr-2">
+                      -
+                    </span>{" "}
+                    Let's Talk
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://pavnaintlschool.campuscare.cloud/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-gray-400 hover:text-brand-yellow transition-all duration-300 flex items-center group"
+                  >
+                    <span className="w-0 group-hover:w-2 transition-all duration-300 overflow-hidden text-brand-yellow mr-0 group-hover:mr-2">
+                      -
+                    </span>{" "}
+                    Apply Online
                   </a>
                 </li>
               </ul>
             </div>
 
-            {/* Column 4: Newsletter & Social */}
-            <div className="md:col-span-4 lg:col-span-4">
+            {/* Column 5: Newsletter & Social */}
+            <div className="md:col-span-6 lg:col-span-3">
               <h4 className="font-bold mb-8 uppercase tracking-widest text-[11px] text-white flex items-center">
                 <span className="w-2 h-2 bg-brand-yellow rounded-full mr-3 shadow-[0_0_10px_rgba(255,202,5,0.5)]"></span>{" "}
                 Stay Connected
