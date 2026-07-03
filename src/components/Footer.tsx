@@ -77,7 +77,6 @@ const Footer: FC = () => {
           </div>
         </div>
       </div>
-      {/* 2. Main Footer Links & Info */}
       <div className="pt-16 md:pt-24 pb-10 relative">
         {/* Background Pattern */}
         <div className="absolute inset-0 banner-pattern opacity-10 pointer-events-none"></div>
