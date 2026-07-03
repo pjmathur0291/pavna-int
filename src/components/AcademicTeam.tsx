@@ -1,6 +1,7 @@
 import { FC } from "react";
 import { motion } from "motion/react";
-import Image1 from "../assets/images/Home/image_24.webp";
+// import Image1 from "../assets/images/Home/image_24.webp";
+import Image1 from "../assets/images/Home/image_53.webp";
 import Image2 from "../assets/images/Home/image_67.webp";
 import Image3 from "../assets/images/Home/image_46.webp";
 import Image4 from "../assets/images/Home/image_68.webp";
@@ -16,81 +17,68 @@ import Image12 from "../assets/images/Home/image_76.webp";
 interface TeamMember {
   name: string;
   designation: string;
-  category: string;
   image: string;
 }
 
 const teamMembers: TeamMember[] = [
   {
-    name: "Dr. Shyama Chona",
-    designation: "(Educationist) President",
-    category: "Leadership",
+    name: "AARTI NIGAM",
+    designation: "PRINCIPAL",
     image: Image1,
   },
   {
     name: "Mr. Ashank Bhandari",
     designation: "(Management Professional) Executive Director",
-    category: "Leadership",
     image: Image2,
   },
   {
     name: "Prof. KVSM Krishna",
     designation: "Director Emeritus",
-    category: "Leadership",
     image: Image3,
   },
   {
     name: "Ms. Aarti Nigam",
     designation: "Principal",
-    category: "Leadership",
     image: Image4,
   },
   {
     name: "Ms. Jeanie Aibara",
     designation: "(Educationist) Head Academic Board",
-    category: "Academic Board",
     image: Image5,
   },
   {
     name: "CA Rakesh Bajaj",
     designation: "(Educationist) Head Operations",
-    category: "Administration",
     image: Image6,
   },
   {
     name: "Mr. JC Pant",
     designation: "(Educationist) Member",
-    category: "Academic Board",
     image: Image7,
   },
   {
     name: "Mr. Agam Jain",
     designation: "(IPS) Member",
-    category: "Advisory Council",
     image: Image8,
   },
   {
     name: "Mr. Gaurav Dayal",
     designation: "(IAS) Member",
-    category: "Advisory Council",
     image: Image9,
   },
   {
     name: "Mr. Piyush Mordia",
     designation: "(IPS) Member",
-    category: "Advisory Council",
     image: Image10,
   },
   {
     name: "Mr. Paras Parekh",
     designation: "(Business) Member",
-    category: "Advisory Council",
     image: Image11,
   },
   {
     name: "Mr. Pramod Kumar",
     designation: "(Legal) Member",
-    category: "Advisory Council",
     image: Image12,
   },
 ];
@@ -179,9 +167,6 @@ const AcademicTeam: FC = () => {
                       alt={member.name}
                       className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
                     />
-                    <div className="absolute top-4 right-4 bg-brand-navy/90 backdrop-blur-sm text-[10px] uppercase font-bold tracking-widest text-brand-yellow px-3 py-1 rounded-full border border-white/10">
-                      {member.category}
-                    </div>
                   </div>
 
                   {/* Info section occupying remaining ~27.5% of card height (110px out of 400px) */}

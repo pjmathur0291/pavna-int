@@ -13,6 +13,7 @@ import {
   Footprints,
 } from "lucide-react";
 import Image1 from "../assets/images/Home/DSC09096.webp";
+import PavnaEcosystem from "./PavnaEcosystem";
 
 export default function AboutOverview() {
   // Exact content lists for Vision and Mission (from OCR Page 1)
@@ -323,8 +324,11 @@ export default function AboutOverview() {
               </motion.div>
             ))}
           </div>
-
-          {/* Page-to-Page Navigation */}
+        </div>
+      </section>
+      <PavnaEcosystem />
+      <section className="pb-14 bg-white border-b border-neutral-100">
+        <div className="max-w-7xl mx-auto px-6">
           <div className="mt-20 border-t border-neutral-100 pt-12">
             <div className="flex flex-col sm:flex-row items-center justify-between gap-6">
               {/* Previous spacer */}
