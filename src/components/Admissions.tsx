@@ -10,7 +10,6 @@ import {
   ShieldCheck,
   Award,
 } from "lucide-react";
-import Image1 from "../assets/images/Home/image_45.webp";
 
 const Admissions: FC = () => {
   const steps = [
@@ -62,7 +61,7 @@ const Admissions: FC = () => {
       <section className="relative bg-brand-navy text-white overflow-hidden pt-32 pb-16 md:pt-40 md:pb-24 border-b border-white/5">
         <div className="absolute inset-0 z-0 opacity-15 pointer-events-none">
           <img
-            src={Image1}
+            src="/images/image_45.webp"
             alt="School Admissions Background"
             className="w-full h-full object-cover scale-105 filter blur-[2px]"
             referrerPolicy="no-referrer"

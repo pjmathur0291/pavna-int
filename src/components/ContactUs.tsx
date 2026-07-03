@@ -1,80 +1,9 @@
 import React, { FC, useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import {
-  Phone,
-  Mail,
-  MapPin,
-  RotateCw,
-  CheckCircle2,
-  AlertCircle,
-  X,
-} from "lucide-react";
+import { Phone, Mail, MapPin, CheckCircle2, X } from "lucide-react";
 import Image1 from "../assets/images/Home/DSC09241.webp";
 
-// Cascading States and Cities
-const STATES_CITIES_MAP: Record<string, string[]> = {
-  "Uttar Pradesh": [
-    "Hathras",
-    "Aligarh",
-    "Agra",
-    "Noida",
-    "Ghaziabad",
-    "Lucknow",
-    "Kanpur",
-  ],
-  Delhi: ["New Delhi", "Dwarka", "Rohini"],
-  Haryana: ["Gurgaon", "Faridabad", "Rohtak", "Sonipat"],
-  Rajasthan: ["Jaipur", "Udaipur", "Jodhpur", "Kota"],
-  Maharashtra: ["Mumbai", "Pune", "Nagpur", "Thane"],
-  Karnataka: ["Bangalore", "Mysore", "Mangalore"],
-  Other: ["Other"],
-};
-
-const ADMISSION_GRADES = [
-  "Playgroup",
-  "Nursery",
-  "LKG",
-  "UKG",
-  "Grade 1",
-  "Grade 2",
-  "Grade 3",
-  "Grade 4",
-  "Grade 5",
-  "Grade 6",
-  "Grade 7",
-  "Grade 8",
-  "Grade 9",
-  "Grade 10",
-  "Grade 11",
-  "Grade 12",
-];
-
-const SCHOOLING_OPTIONS = ["Day Schooling", "Day Boarding", "Full Boarding"];
-
-const COUNTRY_CODES = [
-  { code: "+91", label: "IND (+91)" },
-  { code: "+1", label: "USA (+1)" },
-  { code: "+44", label: "UK (+44)" },
-  { code: "+971", label: "UAE (+971)" },
-  { code: "+65", label: "SGP (+65)" },
-];
-
 export const ContactUs: FC = () => {
-  // Form States
-  const [formData, setFormData] = useState({
-    name: "",
-    age: "",
-    state: "",
-    city: "",
-    countryCode: "+91",
-    mobileNumber: "",
-    emailAddress: "",
-    admissionFor: "",
-    schoolingOption: "",
-    captchaInput: "",
-    agreeToInfo: false,
-  });
-
   // Captcha State
   const [captchaCode, setCaptchaCode] = useState("");
   const [captchaBgSeed, setCaptchaBgSeed] = useState<
@@ -84,12 +13,9 @@ export const ContactUs: FC = () => {
     { x1: 55, y1: 10, x2: 80, y2: 35 },
   ]);
 
-  // Validation / Feedback States
   const [errors, setErrors] = useState<Record<string, string>>({});
-  const [isSubmitting, setIsSubmitting] = useState(false);
   const [showSuccessModal, setShowSuccessModal] = useState(false);
 
-  // Generate Captcha Code
   const generateCaptcha = () => {
     const chars = "abcdefghijklmnopqrstuvwxyz0123456789";
     let code = "";
@@ -97,8 +23,6 @@ export const ContactUs: FC = () => {
       code += chars.charAt(Math.floor(Math.random() * chars.length));
     }
     setCaptchaCode(code);
-
-    // Generate random background visual circles
     const circles = [];
     for (let i = 0; i < 3; i++) {
       circles.push({
@@ -114,135 +38,11 @@ export const ContactUs: FC = () => {
 
   useEffect(() => {
     generateCaptcha();
-  }, []);
-
-  // Handle Input Changes
-  const handleInputChange = (field: string, value: string | boolean) => {
-    setFormData((prev) => ({ ...prev, [field]: value }));
-    // Clear error for this field
-    if (errors[field]) {
-      setErrors((prev) => ({ ...prev, [field]: "" }));
-    }
-
-    // Cascading logic: clear city if state changes
-    if (field === "state") {
-      setFormData((prev) => ({ ...prev, state: value as string, city: "" }));
-    }
-  };
-
-  // Form Validation
-  const validateForm = () => {
-    const newErrors: Record<string, string> = {};
-
-    if (!formData.name.trim()) newErrors.name = "Name is required";
-    if (!formData.age.trim()) newErrors.age = "Age is required";
-    if (!formData.state) newErrors.state = "State is required";
-    if (!formData.city) newErrors.city = "City is required";
-
-    // Mobile Validation
-    if (!formData.mobileNumber.trim()) {
-      newErrors.mobileNumber = "Mobile number is required";
-    } else if (!/^\d{10}$/.test(formData.mobileNumber.trim())) {
-      newErrors.mobileNumber = "Enter a valid 10-digit mobile number";
-    }
-
-    // Email Validation
-    if (!formData.emailAddress.trim()) {
-      newErrors.emailAddress = "Email address is required";
-    } else if (
-      !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.emailAddress.trim())
-    ) {
-      newErrors.emailAddress = "Enter a valid email address";
-    }
-
-    if (!formData.admissionFor)
-      newErrors.admissionFor = "Admission grade is required";
-    if (!formData.schoolingOption)
-      newErrors.schoolingOption = "Schooling option is required";
-
-    // Captcha Validation
-    if (!formData.captchaInput.trim()) {
-      newErrors.captcha = "Captcha is required";
-    } else if (
-      formData.captchaInput.trim().toLowerCase() !== captchaCode.toLowerCase()
-    ) {
-      newErrors.captcha = "Invalid captcha code";
-    }
-
-    // Agreement Validation
-    if (!formData.agreeToInfo) {
-      newErrors.agreeToInfo = "You must agree to receive information";
-    }
-
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
-  };
-
-  // Handle Submit
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (validateForm()) {
-      setIsSubmitting(true);
-      // Simulate API submit
-      setTimeout(() => {
-        setIsSubmitting(false);
-        setShowSuccessModal(true);
-        // Reset form
-        setFormData({
-          name: "",
-          age: "",
-          state: "",
-          city: "",
-          countryCode: "+91",
-          mobileNumber: "",
-          emailAddress: "",
-          admissionFor: "",
-          schoolingOption: "",
-          captchaInput: "",
-          agreeToInfo: false,
-        });
-        generateCaptcha();
-      }, 1500);
-    }
-  };
-  useEffect(() => {
-    const scriptSrc = "https://widgets.in4.nopaperforms.com/emwgts.js";
-    let script = document.querySelector(
-      `script[src="${scriptSrc}"]`,
-    ) as HTMLScriptElement | null;
-
-    // Form ko initialize karne ka core function
-    const initializeForm = () => {
-      const globalWindow = window as any;
-      if (
-        globalWindow.NPF_WIDGETS &&
-        typeof globalWindow.NPF_WIDGETS.init === "function"
-      ) {
-        globalWindow.NPF_WIDGETS.init();
-      }
-    };
-
-    if (!script) {
-      // 1. Agar script nahi hai, toh use create karein aur append karein
-      const newScript = document.createElement("script");
-      newScript.type = "text/javascript";
-      newScript.async = true;
-      newScript.src = scriptSrc;
-
-      // CRITICAL FIX: Script load hote hi form ko initialize karein
-      newScript.onload = () => {
-        initializeForm();
-      };
-
-      document.body.appendChild(newScript);
-    } else {
-      // 2. Agar script pehle se loaded hai (spa routing ke vajah se), toh minor delay ke baad init karein
-      const timer = setTimeout(() => {
-        initializeForm();
-      }, 150);
-
-      return () => clearTimeout(timer);
-    }
+    const script = document.createElement("script");
+    script.type = "text/javascript";
+    script.async = true;
+    script.src = "https://widgets.in4.nopaperforms.com/emwgts.js";
+    document.body.appendChild(script);
   }, []);
   return (
     <div className="bg-[#FDFCFB] min-h-screen text-brand-black font-gill selection:bg-brand-orange/20 selection:text-brand-navy">
@@ -440,12 +240,10 @@ export const ContactUs: FC = () => {
                 </h2>
               </div>
 
-              {/* Interactive Form */}
               <div
-                className="npf_wgts w-full max-w-xl mx-auto"
+                className="npf_wgts"
                 data-height="520px"
                 data-w="d190862d64d81dadfab9679fed72ae68"
-                style={{ minHeight: "520px" }} // Standard heights backup layout shift rokne ke liye
               ></div>
             </div>
           </div>

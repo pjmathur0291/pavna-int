@@ -173,7 +173,7 @@ const Careers: FC = () => {
       >
         <div className="absolute inset-0 z-0 opacity-15 pointer-events-none">
           <img
-            src="/src/assets/images/school_robotics_teacher_lab_1780940479915.png"
+            src="/images/school_robotics_teacher_lab_1780940479915.webp"
             alt="School Lab Background"
             className="w-full h-full object-cover scale-105 filter blur-[2px]"
           />
