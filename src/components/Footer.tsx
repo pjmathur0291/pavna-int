@@ -77,7 +77,6 @@ const Footer: FC = () => {
           </div>
         </div>
       </div>
-
       {/* 2. Main Footer Links & Info */}
       <div className="pt-16 md:pt-24 pb-10 relative">
         {/* Background Pattern */}
@@ -466,6 +465,7 @@ const Footer: FC = () => {
                 onClick={(e) => e.preventDefault()}
                 className="hover:text-brand-yellow transition-colors"
               >
+                {" "}
                 Privacy Policy
               </a>
               <span className="text-white/20">|</span>
