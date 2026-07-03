@@ -7,15 +7,10 @@ import {
   Home,
   Leaf,
   Snowflake,
-  Apple,
   Activity,
   Palette,
   Smile,
   ArrowRight,
-  BookOpen,
-  Bookmark,
-  Users,
-  ChevronLeft,
   ChevronRight,
   ChevronDown,
   Heart,
@@ -33,13 +28,20 @@ import Image10 from "../assets/images/Home/DSC06058.JPG.webp";
 import Image11 from "../assets/images/Home/image_83.webp";
 import Image12 from "../assets/images/Home/image_60.webp";
 import Image13 from "../assets/images/Home/Boarding-facility-2-1.webp";
+import Image14 from "../assets/images/Home/2O0A1123.JPG";
+import Image15 from "../assets/images/Home/sports-1.jpeg";
+import Image16 from "../assets/images/Home/entertainmet-1.JPG";
+import Image17 from "../assets/images/Home/DSC06058.JPG.webp";
+import Image18 from "../assets/images/Home/DSC06065.JPG.webp";
+import Image19 from "../assets/images/Home/DSC06023.JPG.webp";
+import Image20 from "../assets/images/Home/image_83.webp";
 
 interface FacilityTab {
   id: string;
   tabTitle: string;
   heading: string;
   description: string;
-  image: string;
+  image: any;
   icon: any;
 }
 
@@ -125,7 +127,7 @@ const PinkBedIcon: FC = () => (
 const BoardingPage: FC = () => {
   const [activeTab, setActiveTab] = useState<string>("nestled-nature");
   const [slideIndex, setSlideIndex] = useState<number>(0);
-
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
   useEffect(() => {
     const interval = setInterval(() => {
       setSlideIndex((prev) => (prev + 1) % 3);
@@ -140,7 +142,7 @@ const BoardingPage: FC = () => {
       heading: "Premium Boarding Facilities Nestled in Nature",
       description:
         "Set in a serene, green campus away from city noise, our boarding facilities provide children with the calm and space they need to focus, reflect, and recharge a true home away from home.",
-      image: Image1,
+      image: [Image1],
       icon: Leaf,
     },
     {
@@ -149,7 +151,7 @@ const BoardingPage: FC = () => {
       heading: "AC Rooms with Attached Bathrooms",
       description:
         "Our triple-sharing air-conditioned rooms are designed for comfort, cleanliness, and camaraderie. Each room has an attached bathroom and is maintained to the highest hygiene standards year-round.",
-      image: Image2,
+      image: [Image2, Image14],
       icon: Snowflake,
     },
     // {
@@ -167,7 +169,7 @@ const BoardingPage: FC = () => {
       heading: "State-of-the-Art Sports Facilities",
       description:
         "From horse riding, lawn tennis, and handball to a wide array of indoor and outdoor sports, our world-class infrastructure is designed to help every child discover and nurture their true athletic potential.",
-      image: Image4,
+      image: [Image4, Image15],
       icon: Activity,
     },
     {
@@ -176,7 +178,7 @@ const BoardingPage: FC = () => {
       heading: "Holistic Co-Curricular Exposure",
       description:
         "Pottery, sculpture, textile design, and industrial design are just the beginning. Our diverse range of co-curricular activities empowers students to explore their passions, staying creatively vibrant and emotionally grounded.",
-      image: Image5,
+      image: [Image5],
       icon: Palette,
     },
     {
@@ -185,7 +187,7 @@ const BoardingPage: FC = () => {
       heading: "Entertainment Zone for Recreation",
       description:
         "A dedicated recreation and entertainment zone gives students healthy downtime — table tennis, board games, lounge areas, and more. Balance between study and play is fundamental to wellbeing.",
-      image: Image6,
+      image: [Image6, Image16],
       icon: Smile,
     },
     {
@@ -194,7 +196,7 @@ const BoardingPage: FC = () => {
       heading: "Pure Vegetarian Dining",
       description:
         "Our in-house kitchen serves freshly prepared, pure vegetarian meals three times a day — nutritionally balanced menus curated to support growing minds and bodies with wholesome, hygienic food.",
-      image: Image7,
+      image: [Image17, Image19],
       icon: Utensils,
     },
     {
@@ -203,7 +205,7 @@ const BoardingPage: FC = () => {
       heading: "Medical Facilities",
       description:
         "We ensure every student's well-being with 24/7 medical care, routine health check-ups, and immediate first-aid support.",
-      image: Image8,
+      image: [Image8, Image20],
       icon: Heart,
     },
   ];
@@ -211,7 +213,14 @@ const BoardingPage: FC = () => {
   const currentItem =
     FACILITIES.find((item) => item.id === activeTab) || FACILITIES[0];
   const activeIndex = FACILITIES.findIndex((item) => item.id === activeTab);
+  useEffect(() => {
+    if (!currentItem.image || currentItem.image.length <= 1) return;
 
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prev) => (prev + 1) % currentItem.image.length);
+    }, 6500);
+    return () => clearInterval(interval);
+  }, [currentItem]);
   return (
     <div className="bg-[#FDFCFB] min-h-screen text-brand-black font-gill selection:bg-brand-orange/20 selection:text-brand-navy">
       {/* 1. Header Hero Panel with Breadcrumbs */}
@@ -532,17 +541,45 @@ const BoardingPage: FC = () => {
                         {currentItem.description}
                       </p>
                     </div>
-
-                    {/* Image Column */}
-                    <div className="md:col-span-5 p-6 md:p-8 flex items-center justify-center">
+                    <div className="md:col-span-5 p-6 md:p-8 flex items-center justify-center relative group">
                       <div className="aspect-[4/5] w-full relative overflow-hidden rounded-[2.5rem] shadow-md bg-neutral-100">
-                        <img
-                          src={currentItem.image}
-                          alt={currentItem.heading}
-                          className="absolute inset-0 w-full h-full object-cover scale-100 group-hover:scale-105 transition-transform duration-700"
-                          referrerPolicy="no-referrer"
-                        />
+                        <AnimatePresence mode="popLayout">
+                          <motion.img
+                            key={currentImageIndex} // Make sure your parent component tracks an index state (e.g., currentImageIndex)
+                            initial={{ opacity: 0, scale: 1.03 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            exit={{ opacity: 0 }}
+                            transition={{ duration: 0.8, ease: "easeInOut" }}
+                            src={
+                              currentItem.image
+                                ? currentItem.image[currentImageIndex]
+                                : currentItem.image
+                            }
+                            alt={`${currentItem.heading} - Slide ${currentImageIndex + 1}`}
+                            className="absolute inset-0 w-full h-full object-cover scale-100 group-hover:scale-105 transition-transform duration-700"
+                            referrerPolicy="no-referrer"
+                          />
+                        </AnimatePresence>
+
                         <div className="absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+                        {/* Exact match Pagination Dots Layout */}
+                        {currentItem.image && currentItem.image.length > 1 && (
+                          <div className="absolute bottom-5 left-1/2 -translate-x-1/2 z-20 flex gap-1.5 bg-black/45 backdrop-blur-md px-3 py-1.5 rounded-full border border-white/10 shadow-sm">
+                            {currentItem?.image?.map((_: any, idx: any) => (
+                              <button
+                                key={idx}
+                                onClick={() => setCurrentImageIndex(idx)}
+                                className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                                  idx === currentImageIndex
+                                    ? "bg-brand-orange w-4"
+                                    : "bg-white/50 hover:bg-white"
+                                }`}
+                                aria-label={`Go to slide ${idx + 1}`}
+                              />
+                            ))}
+                          </div>
+                        )}
                       </div>
                     </div>
                   </motion.div>
@@ -611,14 +648,52 @@ const BoardingPage: FC = () => {
                           </h3>
 
                           {/* Image */}
-                          <div className="w-full aspect-[16/10] rounded-xl overflow-hidden bg-neutral-100 shadow-sm">
-                            <img
-                              src={facility.image}
-                              alt={facility.heading}
-                              referrerPolicy="no-referrer"
-                              className="w-full h-full object-cover"
-                              loading="lazy"
-                            />
+                          <div className="w-full aspect-[16/10] rounded-xl overflow-hidden bg-neutral-100 shadow-sm relative">
+                            <AnimatePresence mode="popLayout">
+                              <motion.img
+                                key={currentImageIndex} // Make sure your parent component tracks an index state (e.g., currentImageIndex)
+                                initial={{ opacity: 0, scale: 1.03 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                exit={{ opacity: 0 }}
+                                transition={{
+                                  duration: 0.8,
+                                  ease: "easeInOut",
+                                }}
+                                src={
+                                  currentItem.image
+                                    ? currentItem.image[currentImageIndex]
+                                    : currentItem.image
+                                }
+                                alt={`${currentItem.heading} - Slide ${currentImageIndex + 1}`}
+                                className="absolute inset-0 w-full h-full object-cover scale-100 group-hover:scale-105 transition-transform duration-700"
+                                referrerPolicy="no-referrer"
+                              />
+                            </AnimatePresence>
+
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+                            {/* Exact match Pagination Dots Layout */}
+                            {currentItem.image &&
+                              currentItem.image.length > 1 && (
+                                <div className="absolute bottom-5 left-1/2 -translate-x-1/2 z-20 flex gap-1.5 bg-black/45 backdrop-blur-md px-3 py-1.5 rounded-full border border-white/10 shadow-sm">
+                                  {currentItem?.image?.map(
+                                    (_: any, idx: any) => (
+                                      <button
+                                        key={idx}
+                                        onClick={() =>
+                                          setCurrentImageIndex(idx)
+                                        }
+                                        className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                                          idx === currentImageIndex
+                                            ? "bg-brand-orange w-4"
+                                            : "bg-white/50 hover:bg-white"
+                                        }`}
+                                        aria-label={`Go to slide ${idx + 1}`}
+                                      />
+                                    ),
+                                  )}
+                                </div>
+                              )}
                           </div>
 
                           {/* Description */}
