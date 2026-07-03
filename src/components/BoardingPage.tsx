@@ -35,6 +35,7 @@ import Image17 from "../assets/images/Home/DSC06058.JPG.webp";
 import Image18 from "../assets/images/Home/DSC06065.JPG.webp";
 import Image19 from "../assets/images/Home/DSC06023.JPG.webp";
 import Image20 from "../assets/images/Home/image_83.webp";
+import Image21 from "../assets/images/Home/DSC06238.JPG.webp";
 
 interface FacilityTab {
   id: string;
@@ -178,7 +179,7 @@ const BoardingPage: FC = () => {
       heading: "Holistic Co-Curricular Exposure",
       description:
         "Pottery, sculpture, textile design, and industrial design are just the beginning. Our diverse range of co-curricular activities empowers students to explore their passions, staying creatively vibrant and emotionally grounded.",
-      image: [Image5],
+      image: [Image5, Image21],
       icon: Palette,
     },
     {
