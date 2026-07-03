@@ -57,13 +57,15 @@ const Footer: FC = () => {
               </a>
 
               {/* Download Brochure Premium Card Button */}
-              <a
-                href="#lets-talk"
+              {/* <a
+                href="https://pavnaintlschool.campuscare.cloud/"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="group/btn relative flex items-center justify-between bg-white/5 border border-white/10 text-white p-5 md:p-6 rounded-[8px] hover:border-brand-sky hover:bg-brand-sky/20 transition-all duration-300 transform hover:-translate-y-1 backdrop-blur-md"
               >
                 <div className="flex flex-col text-left">
                   <span className="text-sm md:text-base font-bold uppercase tracking-widest mb-1">
-                    Download Brochure
+                    Apply Online
                   </span>
                   <span className="text-xs text-gray-400 font-medium group-hover/btn:text-brand-sky transition-colors">
                     Explore our curriculum & campus
@@ -72,7 +74,7 @@ const Footer: FC = () => {
                 <div className="w-12 h-12 border border-white/10 bg-white/5 rounded-full flex items-center justify-center group-hover/btn:border-brand-sky group-hover/btn:bg-brand-sky group-hover/btn:text-white transition-colors duration-300">
                   <i className="fas fa-download transform group-hover/btn:-translate-y-1 transition-transform duration-300"></i>
                 </div>
-              </a>
+              </a> */}
             </div>
           </div>
         </div>

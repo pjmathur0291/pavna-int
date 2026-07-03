@@ -60,18 +60,18 @@ export default function PavnaPromise() {
               </p>
             </motion.div>
 
-            <motion.button
+            <motion.a
+              href="https://pavnaintlschool.campuscare.cloud/"
+              target="_blank"
+              rel="noopener noreferrer"
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ delay: 0.3 }}
-              className="group bg-brand-yellow hover:bg-white text-brand-navy px-4 py-2 rounded-full font-bold text-xs sm:text-sm flex items-center gap-4 transition-all duration-300"
+              className="w-fit group bg-brand-yellow hover:bg-white text-brand-navy px-4 py-2 rounded-full font-bold text-xs sm:text-sm flex items-center gap-4 transition-all duration-300"
             >
-              DOWNLOAD BROCHURE
-              <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-brand-navy group-hover:bg-brand-yellow flex items-center justify-center text-white group-hover:text-brand-navy transition-all duration-300">
-                <ArrowDown className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
-              </div>
-            </motion.button>
+              Apply Online
+            </motion.a>
           </div>
 
           {/* Student Cutout Image */}

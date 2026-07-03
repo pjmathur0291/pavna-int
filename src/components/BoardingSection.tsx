@@ -8,7 +8,16 @@ import Image4 from "../assets/images/Home/Boarding-facility-2-1.webp";
 import Image5 from "../assets/images/Home/image_59.webp";
 import Image6 from "../assets/images/Home/Study-Area-1-1-1.webp";
 import Image7 from "../assets/images/Home/2O0A1216-1.webp";
+// import Image8 from "../assets/images/Home/image_60.webp";
 import Image8 from "../assets/images/Home/image_60.webp";
+import Image9 from "../assets/images/Home/DSC05204.webp";
+import Image10 from "../assets/images/Home/DSC05147.webp";
+import Image11 from "../assets/images/Home/DSC05168.webp";
+import Image12 from "../assets/images/Home/2O0A1077.webp";
+import Image13 from "../assets/images/Home/entertainmet-1.webp";
+import Image14 from "../assets/images/Home/2O0A1123.webp";
+import Image15 from "../assets/images/Home/2O0A1138.webp";
+import Image20 from "../assets/images/Home/image_83.webp";
 
 const FEATURES = [
   {
@@ -37,7 +46,17 @@ const FEATURES = [
   },
 ];
 
-const IMAGES = [Image1, Image3, Image5, Image6, Image7, Image8];
+const IMAGES = [
+  Image9,
+  Image10,
+  Image11,
+  Image12,
+  Image13,
+  Image14,
+  Image15,
+  Image8,
+  Image20,
+];
 
 export default function BoardingSection() {
   const [currentIndex, setCurrentIndex] = useState(0);

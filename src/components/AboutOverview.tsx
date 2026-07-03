@@ -329,7 +329,7 @@ export default function AboutOverview() {
       <PavnaEcosystem />
       <section className="pb-14 bg-white border-b border-neutral-100">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="mt-20 border-t border-neutral-100 pt-12">
+          <div className="mt-10 border-t border-neutral-100 pt-12">
             <div className="flex flex-col sm:flex-row items-center justify-between gap-6">
               {/* Previous spacer */}
               <div className="w-full sm:w-auto text-left order-2 sm:order-1">

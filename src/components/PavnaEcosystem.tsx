@@ -58,10 +58,9 @@ const ecosystemData: SectionData[] = [
         "Academic rigor is centered around rote learning",
       ],
       pavna: [
-        "Inquiry based learning - teacher training programs are in progress. Year long calendar",
-        "Introducing Montessori system!",
-        "SEEL (Social Emotional and Ethical Learning) - focus on self and environment and community engagement",
-        "Co-Curricular, Super-Curricular activities as essentials",
+        "Expertise Learning - The Cambridge curriculum emphasizes learning by doing through hands-on activities, real-world projects, and reflective learning",
+        "SEEL (Social Emotional and Ethical Learning) - focus on self and environment and community engagement",
+        "Co-Curricular, Super-Curricular activities as essentials",
       ],
     },
   },
