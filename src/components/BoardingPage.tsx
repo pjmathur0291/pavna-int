@@ -32,6 +32,7 @@ import Image9 from "../assets/images/Home/DSC06023.JPG.webp";
 import Image10 from "../assets/images/Home/DSC06058.JPG.webp";
 import Image11 from "../assets/images/Home/image_83.webp";
 import Image12 from "../assets/images/Home/image_60.webp";
+import Image13 from "../assets/images/Home/Boarding-facility-2-1.webp";
 
 interface FacilityTab {
   id: string;
@@ -217,7 +218,7 @@ const BoardingPage: FC = () => {
       <section className="relative bg-brand-navy text-white overflow-hidden pt-32 pb-16 md:pt-40 md:pb-24 border-b border-white/5">
         <div className="absolute inset-0 z-0 opacity-15 pointer-events-none">
           <img
-            src="https://pavnaschool.com/wp-content/uploads/2026/04/Boarding-facility-2-1.webp"
+            src={Image13}
             alt="Boarding Campus Hero"
             className="w-full h-full object-cover scale-105 filter blur-[1px]"
           />
