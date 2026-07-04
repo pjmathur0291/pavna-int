@@ -57,7 +57,7 @@ const Footer: FC = () => {
               </a>
 
               {/* Download Brochure Premium Card Button */}
-              <a
+              {/* <a
                 href="#lets-talk"
                 className="group/btn relative flex items-center justify-between bg-white/5 border border-white/10 text-white p-5 md:p-6 rounded-[8px] hover:border-brand-sky hover:bg-brand-sky/20 transition-all duration-300 transform hover:-translate-y-1 backdrop-blur-md"
               >
@@ -72,7 +72,7 @@ const Footer: FC = () => {
                 <div className="w-12 h-12 border border-white/10 bg-white/5 rounded-full flex items-center justify-center group-hover/btn:border-brand-sky group-hover/btn:bg-brand-sky group-hover/btn:text-white transition-colors duration-300">
                   <i className="fas fa-download transform group-hover/btn:-translate-y-1 transition-transform duration-300"></i>
                 </div>
-              </a>
+              </a> */}
             </div>
           </div>
         </div>
@@ -398,7 +398,7 @@ const Footer: FC = () => {
                 details, and school news.
               </p>
 
-              <form
+              {/* <form
                 className="relative mb-8 group"
                 onSubmit={(e) => e.preventDefault()}
               >
@@ -413,7 +413,7 @@ const Footer: FC = () => {
                 >
                   Join
                 </button>
-              </form>
+              </form> */}
 
               <div className="flex space-x-4">
                 <a
